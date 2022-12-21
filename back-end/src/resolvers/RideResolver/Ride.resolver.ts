@@ -7,7 +7,7 @@ import RideRepository from "../../models/Ridedb/Ride.repository";
 @Resolver(Ride)
 export default class RideResolver {
   @Query(() => [Ride])
-  wilders(): Promise<Ride[]> {
+  rides(): Promise<Ride[]> {
     return RideRepository.getRides();
   }
 /*
