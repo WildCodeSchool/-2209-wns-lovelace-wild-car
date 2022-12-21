@@ -1,16 +1,16 @@
 import { Arg, Args, Ctx, Mutation, Query, Resolver } from "type-graphql";
 
-import Wilder from "../../models/Wilder/Wilder.entity";
-import WilderRepository from "../../models/Wilder/Wilder.repository";
-import { CreateWilderArgs, UpdateWilderArgs } from "./Wilder.input";
+import Ride from "../../models/Ridedb/Ride.entity";
+import RideRepository from "../../models/Ridedb/Ride.repository";
+// import { CreateRideArgs, UpdateWilderArgs } from "./Ride.input";
 
-@Resolver(Wilder)
-export default class WilderResolver {
-  @Query(() => [Wilder])
-  wilders(): Promise<Wilder[]> {
-    return WilderRepository.getWilders();
+@Resolver(Ride)
+export default class RideResolver {
+  @Query(() => [Ride])
+  wilders(): Promise<Ride[]> {
+    return RideRepository.getRides();
   }
-
+/*
   @Mutation(() => Wilder)
   createWilder(
     @Args() { firstName, lastName }: CreateWilderArgs
@@ -36,5 +36,5 @@ export default class WilderResolver {
     @Arg("skillId") skillId: string
   ): Promise<Wilder> {
     return WilderRepository.addSkillToWilder(wilderId, skillId);
-  }
+  }*/ 
 }
