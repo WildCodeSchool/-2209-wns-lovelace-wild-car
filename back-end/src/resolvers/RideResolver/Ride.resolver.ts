@@ -2,7 +2,7 @@ import { Arg, Args, Ctx, Mutation, Query, Resolver } from "type-graphql";
 
 import Ride from "../../models/Ridedb/Ride.entity";
 import RideRepository from "../../models/Ridedb/Ride.repository";
-// import { CreateRideArgs, UpdateWilderArgs } from "./Ride.input";
+import { CreateRideArgs } from "./Ride.input";
 
 @Resolver(Ride)
 export default class RideResolver {
@@ -10,14 +10,20 @@ export default class RideResolver {
   rides(): Promise<Ride[]> {
     return RideRepository.getRides();
   }
-/*
-  @Mutation(() => Wilder)
-  createWilder(
-    @Args() { firstName, lastName }: CreateWilderArgs
-  ): Promise<Wilder> {
-    return WilderRepository.createWilder(firstName, lastName);
-  }
 
+  @Mutation(() => Ride)
+  createRide(
+    @Args() { driverName, departureCity, departureAdress, rideDate,
+      arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
+      smoker, pet  }: CreateRideArgs
+  ): Promise<Ride> {
+    return RideRepository.createRide( driverName, departureCity,
+       departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
+      smoker, pet);
+  }}
+
+
+/*
   @Mutation(() => Wilder)
   updateWilder(
     @Args() { id, firstName, lastName }: UpdateWilderArgs
@@ -37,4 +43,4 @@ export default class RideResolver {
   ): Promise<Wilder> {
     return WilderRepository.addSkillToWilder(wilderId, skillId);
   }*/ 
-}
+
