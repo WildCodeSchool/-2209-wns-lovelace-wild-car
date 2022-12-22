@@ -1,18 +1,52 @@
-// import { IsUUID, MinLength } from "class-validator";
-// import { ArgsType, Field, ID } from "type-graphql";
+ import {  IsDate, IsInt, IsUUID, MinLength, IsBoolean } from "class-validator";
+ import { ArgsType, Field, ID } from "type-graphql";
 
-// @ArgsType()
-// class CreateWilderArgs {
-//   @Field()
-//   @MinLength(1, {
-//     message: "Le prénom doit faire au moins un caractère de long.",
-//   })
-//   firstName: string;
+ @ArgsType()
+ class CreateRideArgs {
+   @Field()
+   @MinLength(1, {
+     message: "Le prénom et nom doit faire au moins un caractère de long.",
+   })
+   driverName: string;
 
-//   @Field()
-//   @MinLength(1, { message: "Le nom doit faire au moins un caractère de long." })
-//   lastName: string;
-// }
+   @Field()
+  @MinLength(1, { message: "La ville de départ doit faire au moins un caractère de long." })
+  departureCity: string;
+
+   @Field()
+  @MinLength(1, { message: "L'adresse de départ doit faire au moins un caractère de long." })
+  departureAdress: string;
+
+   @Field()
+   @IsDate()
+  rideDate: Date;
+
+   @Field()
+  @MinLength(1, { message: "L'adresse d'arriver doit faire au moins un caractère de long." })
+  arrivalCity: string;
+
+   @Field()
+   @IsInt()
+  maxPassagerNumber: number;
+
+   @Field()
+   @IsInt()
+  maxPassagerLeft: number;
+
+   @Field()
+   @IsInt()
+  ridePrice: number;
+
+   @Field()
+   @IsBoolean()
+  smoker: boolean;
+
+   @Field()
+   @IsBoolean()
+   pet: boolean;
+ }
+
+ export { CreateRideArgs };
 
 // @ArgsType()
 // class UpdateWilderArgs extends CreateWilderArgs {
@@ -21,4 +55,4 @@
 //   id: string;
 // }
 
-// export { CreateWilderArgs, UpdateWilderArgs };
+ 
