@@ -5,7 +5,7 @@ import Ridedb from "./Ride.db";
 
 export default class RideRepository extends Ridedb {
   static async initializeRides(): Promise<void> {
-    // await this.clearRepository();
+     await this.clearRepository();
     await this.repository.save([]);
   }
 
@@ -33,6 +33,19 @@ export default class RideRepository extends Ridedb {
     return newRide;
   }
 
+
+  static async deleteRide(id: string): Promise<Ride> {
+    const existingRide = await this.findRideById(id);
+     if (!existingRide) {
+         throw Error("No existing Ride matching ID.");
+       }
+       await this.repository.remove(existingRide);
+        //resetting ID because existingRide loses ID after calling remove
+       existingRide.id = id;
+       return existingRide;
+     }
+  }
+
   // static async updateWilder(
   //   id: string,
   //   firstName: string,
@@ -55,30 +68,4 @@ export default class RideRepository extends Ridedb {
   //   });
   // }
 
-  // static async deleteWilder(id: string): Promise<Wilder> {
-  //   const existingWilder = await this.findWilderById(id);
-  //   if (!existingWilder) {
-  //     throw Error("No existing Wilder matching ID.");
-  //   }
-  //   await this.repository.remove(existingWilder);
-  //   // resetting ID because existingWilder loses ID after calling remove
-  //   existingWilder.id = id;
-  //   return existingWilder;
-  // }
 
-  // static async addSkillToWilder(
-  //   wilderId: string,
-  //   skillId: string
-  // ): Promise<Wilder> {
-  //   const wilder = await this.findWilderById(wilderId);
-  //   if (!wilder) {
-  //     throw Error("No existing Wilder matching ID.");
-  //   }
-  //   const skill = await SkillRepository.getSkillById(skillId);
-  //   if (!skill) {
-  //     throw Error("No existing skill matching ID.");
-  //   }
-  //   wilder.skills = [...wilder.skills, skill];
-  //   return this.repository.save(wilder);
-  // }
-}

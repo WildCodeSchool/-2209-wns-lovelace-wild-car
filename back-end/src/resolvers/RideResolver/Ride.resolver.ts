@@ -20,8 +20,12 @@ export default class RideResolver {
     return RideRepository.createRide( driverName, departureCity,
        departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
       smoker, pet);
-  }}
+  }
 
+  @Mutation(() => Ride)
+  deleteRide(@Arg("id") id: string): Promise<Ride> {
+    return RideRepository.deleteRide(id);
+  }}
 
 /*
   @Mutation(() => Wilder)
@@ -30,12 +34,7 @@ export default class RideResolver {
   ): Promise<Wilder> {
     return WilderRepository.updateWilder(id, firstName, lastName);
   }
-
-  @Mutation(() => Wilder)
-  deleteWilder(@Arg("id") id: string): Promise<Wilder> {
-    return WilderRepository.deleteWilder(id);
-  }
-
+  
   @Mutation(() => Wilder)
   addSkillToWilder(
     @Arg("wilderId") wilderId: string,
