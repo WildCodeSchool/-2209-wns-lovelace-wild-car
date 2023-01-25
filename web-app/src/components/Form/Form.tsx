@@ -1,20 +1,36 @@
+import { useState } from 'react';
 import { SForm } from './Form.styled';
 
 const Form = () => {
+  const [formData, setFormData] = useState({
+    départ: '',
+    arrivé: '',
+    date: '',
+    nbPassager: '',
+  });
+
   return (
     <SForm>
-      <div className='container'>
+      <div className='form'>
         <h1>départ</h1>
-        <textarea></textarea>
+        <input
+          className='inputForm'
+          type='text'
+          name='départ'
+          value={formData.départ}
+        />
         <h1>arrivée</h1>
-        <textarea />
-        <div className='block'>
+        <input
+          className='inputForm'
+          type='text'
+          name='départ'
+          value={formData.arrivé}
+        />
+        <div className='row'>
           <h1>calendrier</h1>
           <h1>nb place</h1>
         </div>
-        <div className='go'>
-          <button>go !</button>
-        </div>
+        <button>go !</button>
       </div>
     </SForm>
   );

@@ -1,27 +1,34 @@
 import styled from 'styled-components';
 
 export const SForm = styled.div`
-  /* border: 1px solid green; */
-  display: flex;
-  justify-content: center;
-
-  .container {
-    background-color: grey;
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 25px;
+    background-color: white;
     width: 280px;
-    height: 240px;
+    height: 220px;
     border-radius: 20px;
   }
 
-  .block {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid blue;
+  h1 {
+    font-size: small;
   }
 
-  .go {
+  .row {
     display: flex;
-    justify-content: center;
-    /* background-color: #ffa553; */
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  button {
+    color: white;
+    background-color: #ffa553;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 280px;
     height: 50px;
+    border: none;
   }
 `;
