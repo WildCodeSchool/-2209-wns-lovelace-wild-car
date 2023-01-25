@@ -1,6 +1,5 @@
-import React from 'react';
+/*import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { CardRow } from './Home.styled';
 import Wilder from '../../components/Wilder/Wilder';
 import Loader from '../../components/Loader';
@@ -8,7 +7,6 @@ import { SectionTitle } from '../../styles/base-styles';
 import { CREATE_WILDER_PATH } from '../paths';
 import { useQuery, gql } from '@apollo/client';
 import { GetWildersQuery } from '../../gql/graphql';
-import RideCard from '../../components/RideCard/RideCard';
 
 const GET_WILDERS = gql`
   query GetWilders {
@@ -65,6 +63,34 @@ const Home = () => {
       <RideCard />
       {renderMainContent()}
     </>
+  );
+};
+
+export default Home;*/
+import {
+  Main,
+  ResearchSection,
+  ResultSection,
+  SwitchSection,
+  ResearchBloc,
+  TravelCard,
+} from './Home.styled';
+
+const Home = () => {
+  return (
+    <Main>
+      <ResearchSection>
+        <SwitchSection></SwitchSection>
+        <ResearchBloc></ResearchBloc>
+      </ResearchSection>
+      <ResultSection>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+      </ResultSection>
+    </Main>
   );
 };
 
