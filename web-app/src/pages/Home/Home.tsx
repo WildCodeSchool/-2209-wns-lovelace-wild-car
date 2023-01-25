@@ -66,15 +66,29 @@ const Home = () => {
 };
 
 export default Home;*/
-import { Main, ResearchSection, ResultSection } from './Home.styled';
+import {
+  Main,
+  ResearchSection,
+  ResultSection,
+  SwitchSection,
+  ResearchBloc,
+  TravelCard,
+} from './Home.styled';
 
 const Home = () => {
   return (
     <Main>
       <ResearchSection>
         <SwitchSection></SwitchSection>
+        <ResearchBloc></ResearchBloc>
       </ResearchSection>
-      <ResultSection></ResultSection>
+      <ResultSection>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+        <TravelCard></TravelCard>
+      </ResultSection>
     </Main>
   );
 };
