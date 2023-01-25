@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
-import { CardRow } from "./Home.styled";
-import Wilder from "../../components/Wilder/Wilder";
-import Loader from "../../components/Loader";
-import { SectionTitle } from "../../styles/base-styles";
-import { CREATE_WILDER_PATH } from "../paths";
-import { useQuery, gql } from "@apollo/client";
-import { GetWildersQuery } from "../../gql/graphql";
+/*import React from 'react';
+import { Link } from 'react-router-dom';
+import { CardRow } from './Home.styled';
+import Wilder from '../../components/Wilder/Wilder';
+import Loader from '../../components/Loader';
+import { SectionTitle } from '../../styles/base-styles';
+import { CREATE_WILDER_PATH } from '../paths';
+import { useQuery, gql } from '@apollo/client';
+import { GetWildersQuery } from '../../gql/graphql';
 
 const GET_WILDERS = gql`
   query GetWilders {
@@ -26,7 +25,7 @@ const GET_WILDERS = gql`
 const Home = () => {
   const { data, loading, error, refetch } = useQuery<GetWildersQuery>(
     GET_WILDERS,
-    { fetchPolicy: "cache-and-network" }
+    { fetchPolicy: 'cache-and-network' }
   );
 
   const renderMainContent = () => {
@@ -37,7 +36,7 @@ const Home = () => {
       return error.message;
     }
     if (!data?.wilders?.length) {
-      return "Aucun wilder à afficher.";
+      return 'Aucun wilder à afficher.';
     }
     return (
       <CardRow>
@@ -63,6 +62,20 @@ const Home = () => {
       <br />
       {renderMainContent()}
     </>
+  );
+};
+
+export default Home;*/
+import { Main, ResearchSection, ResultSection } from './Home.styled';
+
+const Home = () => {
+  return (
+    <Main>
+      <ResearchSection>
+        <SwitchSection></SwitchSection>
+      </ResearchSection>
+      <ResultSection></ResultSection>
+    </Main>
   );
 };
 
