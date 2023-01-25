@@ -9,9 +9,19 @@ const Form = () => {
     nbPassager: '',
   });
 
+  const submit = () => {
+    console.log('submit');
+  };
+
   return (
     <SForm>
-      <div className='form'>
+      <div
+        className='form'
+        onSubmit={async (event) => {
+          event.preventDefault();
+          await submit();
+        }}
+      >
         <h1>départ</h1>
         <input
           className='inputForm'
@@ -30,7 +40,7 @@ const Form = () => {
           <h1>calendrier</h1>
           <h1>nb place</h1>
         </div>
-        <button>go !</button>
+        <button type='submit'>go !</button>
       </div>
     </SForm>
   );
