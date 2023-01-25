@@ -1,11 +1,13 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { MAIN_THEME_COLOR } from "../styles/style-constants";
-import { baseContainerStyles, baseTitleStyles } from "../styles/base-styles";
+import { MAIN_THEME_COLOR } from '../styles/style-constants';
+import { baseContainerStyles, baseTitleStyles } from '../styles/base-styles';
 
 export const Container = styled.div`
-  ${baseContainerStyles}
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(157.67deg, #fb9555 15.1%, #f87a23 75.26%);
 `;
 
 export const MainContainer = styled.main`
@@ -18,7 +20,7 @@ export const Header = styled.header`
 `;
 
 export const Footer = styled.footer`
-  border-top: 2px solid ${MAIN_THEME_COLOR};
+  //
 `;
 
 export const PageTitle = styled.h1`
