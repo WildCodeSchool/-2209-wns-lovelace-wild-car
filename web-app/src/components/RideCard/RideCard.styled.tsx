@@ -8,6 +8,12 @@ export const Main = styled.article`
   height: 27vh;
   border-radius: 25px;
   box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.25);
+  background-color: white;
+  margin: 20px 0px;
+
+  @media (min-width: 768px) {
+    height: 23vh;
+  }
 `;
 
 export const Button = styled.button`
@@ -32,6 +38,10 @@ export const LeftSide = styled.div`
   width: 50%;
   height: 170px;
   padding: 10px 0px 10px 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: 100px;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -41,6 +51,10 @@ export const RightSide = styled.div`
   width: 50%;
   height: 170px;
   padding: 10px 0px 10px 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: 100px;
+  }
 `;
 
 export const DistanceBetweenPoint = styled.article`
@@ -50,6 +64,11 @@ export const DistanceBetweenPoint = styled.article`
   font-weight: bold;
   width: 100%;
   color: #535353;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+  }
 `;
 
 export const StartingPointImage = styled.img`
@@ -83,6 +102,12 @@ export const DotContainer = styled.div`
   justify-content: space-around;
   padding: 2px 0px 2px 5px;
   height: 30px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 30px;
+    align-items: center;
+    margin-right: 8px;
+  }
 `;
 
 export const Dot = styled.div`
