@@ -1,8 +1,14 @@
- import {  IsDate, IsInt, IsUUID, MinLength, IsBoolean } from "class-validator";
+ import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate, isDateString, IsDateString } from "class-validator";
  import { ArgsType, Field, ID } from "type-graphql";
+ 
+ 
+
+ 
 
  @ArgsType()
  class CreateRideArgs {
+
+
    @Field()
    @MinLength(1, {
      message: "Le prénom et nom doit faire au moins un caractère de long.",
@@ -17,9 +23,10 @@
   @MinLength(1, { message: "L'adresse de départ doit faire au moins un caractère de long." })
   departureAdress: string;
 
-   @Field()
-   @IsDate()
+   @Field( )
   rideDate: Date;
+  
+  
 
    @Field()
   @MinLength(1, { message: "L'adresse d'arriver doit faire au moins un caractère de long." })
@@ -46,13 +53,15 @@
    pet: boolean;
  }
 
- export { CreateRideArgs };
 
-// @ArgsType()
-// class UpdateWilderArgs extends CreateWilderArgs {
-//   @Field(() => ID)
-//   @IsUUID()
-//   id: string;
-// }
+
+ @ArgsType()
+ class UpdateRideArgs extends CreateRideArgs {
+   @Field(() => ID)
+   @IsUUID()
+   id: string;
+ }
+
+ export { CreateRideArgs, UpdateRideArgs };
 
  
