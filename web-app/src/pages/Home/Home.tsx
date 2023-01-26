@@ -60,12 +60,14 @@ const Home = () => {
       <Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
       <br />
       <br />
+      <RideCard />
       {renderMainContent()}
     </>
   );
 };
 
 export default Home;*/
+import RideCard from '../../components/RideCard/RideCard';
 import {
   Main,
   ResearchSection,
@@ -83,11 +85,9 @@ const Home = () => {
         <ResearchBloc></ResearchBloc>
       </ResearchSection>
       <ResultSection>
-        <TravelCard></TravelCard>
-        <TravelCard></TravelCard>
-        <TravelCard></TravelCard>
-        <TravelCard></TravelCard>
-        <TravelCard></TravelCard>
+        <RideCard></RideCard>
+        <RideCard></RideCard>
+        <RideCard></RideCard>
       </ResultSection>
     </Main>
   );
