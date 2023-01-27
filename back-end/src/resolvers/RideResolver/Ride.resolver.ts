@@ -19,7 +19,6 @@ export default class RideResolver {
       arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
       smoker, pet  }: CreateRideArgs
   ): Promise<Ride> {
-    console.log(rideDate.toISOString());
     return RideRepository.createRide( driverName, departureCity,
        departureAdress,  rideDate , arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
       smoker, pet);

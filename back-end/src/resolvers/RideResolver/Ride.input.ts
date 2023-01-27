@@ -24,6 +24,7 @@
   departureAdress: string;
 
    @Field( )
+   @IsDate()
   rideDate: Date;
   
   

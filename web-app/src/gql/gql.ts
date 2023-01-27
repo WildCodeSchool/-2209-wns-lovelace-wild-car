@@ -4,9 +4,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 
 const documents = {
     "\n  query MyProfile {\n    myProfile {\n      emailAddress\n    }\n  }\n": types.MyProfileDocument,
-    "\n  mutation DeleteWilder($id: String!) {\n    deleteWilder(id: $id) {\n      id\n      firstName\n    }\n  }\n": types.DeleteWilderDocument,
-    "\n  mutation CreateWilder($firstName: String!, $lastName: String!) {\n    createWilder(firstName: $firstName, lastName: $lastName) {\n      id\n      firstName\n    }\n  }\n": types.CreateWilderDocument,
-    "\n  query GetWilders {\n    wilders {\n      id\n      firstName\n      lastName\n      skills {\n        id\n        skillName\n      }\n    }\n  }\n": types.GetWildersDocument,
+    "\n  mutation DeleteRide($id: String!) {\n    deleteRide(id: $id) {\n      id\n      driverName\n    }\n  }\n": types.DeleteRideDocument,
+    "\n  mutation CreateRide() {\n    createWilder(firstName: $firstName, lastName: $lastName) {\n      id\n      firstName\n    }\n  }\n": types.CreateRideDocument,
+    "\n  query GetWilders {\n    wilders {\n      id\n      firstName\n      lastName\n      skills {\n        id\n        skillName\n      }\n    }\n  }\n": types.GetRidesDocument,
     "\n  mutation SignIn($emailAddress: String!, $password: String!) {\n    signIn(emailAddress: $emailAddress, password: $password) {\n      id\n      emailAddress\n      firstName\n      lastName\n    }\n  }\n": types.SignInDocument,
     "\n  mutation SignUp(\n    $firstName: String!\n    $lastName: String!\n    $emailAddress: String!\n    $password: String!\n  ) {\n    signUp(\n      firstName: $firstName\n      lastName: $lastName\n      emailAddress: $emailAddress\n      password: $password\n    ) {\n      id\n      emailAddress\n    }\n  }\n": types.SignUpDocument,
 };

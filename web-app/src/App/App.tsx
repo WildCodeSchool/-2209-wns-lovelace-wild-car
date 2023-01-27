@@ -4,10 +4,10 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { MyProfileQuery } from '../gql/graphql';
 
-import CreateWilder from '../pages/CreateWilder/CreateWilder';
+import CreateRide from '../pages/CreateRide/CreateRide';
 import Home from '../pages/Home/Home';
 import {
-  CREATE_WILDER_PATH,
+  CREATE_RIDE_PATH,
   HOME_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
@@ -31,7 +31,7 @@ function App() {
       <MainContainer>
         <Routes>
           <Route path={HOME_PATH} element={<Home />} />
-          <Route path={CREATE_WILDER_PATH} element={<CreateWilder />} />
+          <Route path={CREATE_RIDE_PATH} element={<CreateRide />} />
         </Routes>
       </MainContainer>
       <Footer></Footer>
