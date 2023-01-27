@@ -8,11 +8,11 @@ export default class RideDb {
     this.repository = await getRepository(Ride);
   }
 
-  // protected static findWilderById(wildcarId: string) {
-  //   return this.repository.findOneBy({ id: wildcarId });
-  // }
+   protected static findRideById(wildcarId: string) {
+    return this.repository.findOneBy({ id: wildcarId });
+   }
 
-  // static async clearRepository(): Promise<void> {
-  //   this.repository.delete({});
-  // }
+   static async clearRepository(): Promise<void> {
+     this.repository.delete({});
+   }
 }

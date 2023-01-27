@@ -2,7 +2,8 @@ import { Arg, Args, Ctx, Mutation, Query, Resolver } from "type-graphql";
 
 import Ride from "../../models/Ridedb/Ride.entity";
 import RideRepository from "../../models/Ridedb/Ride.repository";
-import { CreateRideArgs } from "./Ride.input";
+import { CreateRideArgs , UpdateRideArgs } from "./Ride.input";
+
 
 @Resolver(Ride)
 export default class RideResolver {
@@ -13,34 +14,35 @@ export default class RideResolver {
 
   @Mutation(() => Ride)
   createRide(
+
     @Args() { driverName, departureCity, departureAdress, rideDate,
       arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
       smoker, pet  }: CreateRideArgs
   ): Promise<Ride> {
+    console.log(rideDate.toISOString());
     return RideRepository.createRide( driverName, departureCity,
-       departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
+       departureAdress,  rideDate , arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
       smoker, pet);
-  }}
-
-
-/*
-  @Mutation(() => Wilder)
-  updateWilder(
-    @Args() { id, firstName, lastName }: UpdateWilderArgs
-  ): Promise<Wilder> {
-    return WilderRepository.updateWilder(id, firstName, lastName);
   }
 
-  @Mutation(() => Wilder)
-  deleteWilder(@Arg("id") id: string): Promise<Wilder> {
-    return WilderRepository.deleteWilder(id);
+  @Mutation(() => Ride)
+  deleteRide(@Arg("id") id: string): Promise<Ride> {
+    return RideRepository.deleteRide(id);
   }
 
-  @Mutation(() => Wilder)
-  addSkillToWilder(
-    @Arg("wilderId") wilderId: string,
-    @Arg("skillId") skillId: string
-  ): Promise<Wilder> {
-    return WilderRepository.addSkillToWilder(wilderId, skillId);
-  }*/ 
+
+  @Mutation(() => Ride)
+  updateRide(
+    @Args() { id, driverName, departureCity,
+      departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
+     smoker, pet }: UpdateRideArgs
+  ): Promise<Ride> {
+    return RideRepository.updateRide(id, driverName, departureCity,
+      departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
+     smoker, pet);
+  }
+}
+  
+
+  
 

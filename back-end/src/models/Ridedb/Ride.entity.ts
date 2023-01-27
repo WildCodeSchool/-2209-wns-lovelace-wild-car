@@ -9,6 +9,10 @@ import {
 } from "typeorm";
 
 
+
+
+
+
 @Entity()
 @ObjectType()
 export default class Ride {
@@ -42,94 +46,64 @@ export default class Ride {
   id: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   driverName: string;
 
-  @Field(() => String)
-  getdriverName() {
-    return `${this.driverName}`;
-  }
+ 
 
   @Column()
-  @Field()
+  @Field(() => String)
   departureCity: string;
 
-  @Field(() => String)
-  getdepartureCity() {
-    return `${this.departureCity}`;
-  }
+ 
 
   @Column()
-  @Field()
+  @Field(() => String)
   departureAdress: string;
 
-  @Field(() => String)
-  getdepartureAdress() {
-    return `${this.departureAdress}`;
-  }
+ 
 
   @Column()
-  @Field()
+  @Field(() => Date)
   rideDate: Date;
 
-  @Field(() => Date)
-  getrideDate() {
-    return `${this.rideDate}`;
-  }
+
 
   @Column()
-  @Field()
+  @Field(() => String)
   arrivalCity: string;
 
-  @Field(() => String)
-  getarrivalCity() {
-    return `${this.arrivalCity}`;
-  }
+ 
 
   @Column()
-  @Field()
+  @Field(() => Number)
   maxPassagerNumber: number;
 
-  @Field(() => Number)
-  getmaxPassagerNumber() {
-    return `${this.maxPassagerNumber}`;
-  }
+
 
   @Column()
-  @Field()
+  @Field(() => Number)
   maxPassagerLeft: number;
 
-  @Field(() => Number)
-  getmaxPassagerLeft() {
-    return `${this.maxPassagerLeft}`;
-  }
+  
 
   @Column()
-  @Field()
+  @Field(() => Number)
   ridePrice: number;
 
-  @Field(() => Number)
-  getridePrice() {
-    return `${this.ridePrice}`;
-  }
+
 
   @Column()
-  @Field()
+  @Field(() => Boolean)
   smoker: boolean;
 
-  @Field(() => Boolean)
-  getsmoker() {
-    return `${this.smoker}`;
-  }
+
 
   @Column()
-  @Field()
+  @Field(() => Boolean)
   pet: boolean;
 
-  @Field(() => Boolean)
-  getpet() {
-    return `${this.pet}`;
-  }
+  
 
 
 

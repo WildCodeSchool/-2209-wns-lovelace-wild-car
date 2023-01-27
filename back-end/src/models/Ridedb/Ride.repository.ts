@@ -5,7 +5,7 @@ import Ridedb from "./Ride.db";
 
 export default class RideRepository extends Ridedb {
   static async initializeRides(): Promise<void> {
-    // await this.clearRepository();
+     await this.clearRepository();
     await this.repository.save([]);
   }
 
@@ -33,52 +33,65 @@ export default class RideRepository extends Ridedb {
     return newRide;
   }
 
-  // static async updateWilder(
-  //   id: string,
-  //   firstName: string,
-  //   lastName: string
-  // ): Promise<
-  //   {
-  //     id: string;
-  //     firstName: string;
-  //     lastName: string;
-  //   } & Wilder
-  // > {
-  //   const existingWilder = await this.repository.findOneBy({ id });
-  //   if (!existingWilder) {
-  //     throw Error("No existing Wilder matching ID.");
-  //   }
-  //   return this.repository.save({
-  //     id,
-  //     firstName,
-  //     lastName,
-  //   });
-  // }
 
-  // static async deleteWilder(id: string): Promise<Wilder> {
-  //   const existingWilder = await this.findWilderById(id);
-  //   if (!existingWilder) {
-  //     throw Error("No existing Wilder matching ID.");
-  //   }
-  //   await this.repository.remove(existingWilder);
-  //   // resetting ID because existingWilder loses ID after calling remove
-  //   existingWilder.id = id;
-  //   return existingWilder;
-  // }
+  static async deleteRide(id: string): Promise<Ride> {
+    const existingRide = await this.findRideById(id);
+     if (!existingRide) {
+         throw Error("Aucun trajet trouver.");
+       }
+       await this.repository.remove(existingRide);
+        //resetting ID because existingRide loses ID after calling remove
+       existingRide.id = id;
+       return existingRide;
+     }
+  
 
-  // static async addSkillToWilder(
-  //   wilderId: string,
-  //   skillId: string
-  // ): Promise<Wilder> {
-  //   const wilder = await this.findWilderById(wilderId);
-  //   if (!wilder) {
-  //     throw Error("No existing Wilder matching ID.");
-  //   }
-  //   const skill = await SkillRepository.getSkillById(skillId);
-  //   if (!skill) {
-  //     throw Error("No existing skill matching ID.");
-  //   }
-  //   wilder.skills = [...wilder.skills, skill];
-  //   return this.repository.save(wilder);
-  // }
-}
+
+   static async updateRide(
+    id: string,
+    driverName: string,
+    departureCity: string,
+    departureAdress: string,
+    rideDate: Date,
+    arrivalCity: string,
+    maxPassagerNumber: number,
+    maxPassagerLeft:number,
+    ridePrice:number,
+    smoker: boolean,
+    pet: boolean,
+   ): Promise<
+     {
+      id: string,
+      driverName: string;
+      departureCity: string;
+      departureAdress: string;
+      rideDate: Date;
+      arrivalCity: string;
+     maxPassagerNumber: number;
+      maxPassagerLeft:number;
+      ridePrice:number;
+      smoker: boolean;
+      pet: boolean;
+     } & Ride
+   > {
+     const existingRide = await this.repository.findOneBy({ id });
+   if (!existingRide) {
+       throw Error("Aucun trajet correspondant trouver.");
+     }
+      return this.repository.save({
+      id,
+      driverName,
+      departureCity,
+      departureAdress,
+      rideDate,
+      arrivalCity,
+      maxPassagerNumber,
+      maxPassagerLeft,
+      ridePrice,
+      smoker,
+      pet,
+    });
+   }
+  }
+
+
