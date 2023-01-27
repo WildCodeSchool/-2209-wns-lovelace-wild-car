@@ -1,14 +1,4 @@
 import ChooseRideButton from '../../components/ChooseRideButton/ChooseRideButton';
-import RideCard from '../../components/RideCard/RideCard';
-import {
-  Dot,
-  DotContainer,
-  DriverImage,
-  DriverPP,
-  DriverPPImage,
-  EndingPointImage,
-  StartingPointImage,
-} from '../../components/RideCard/RideCard.styled';
 import {
   Start,
   DetailSection,
@@ -24,6 +14,15 @@ import {
   DriverName,
   PriceH1,
   PriceValue,
+  MoreInfoTitle,
+  MoreInfoText,
+  Logo,
+  DriverImg,
+  EndingPointImg,
+  StartTimeImg,
+  DriverPPImg,
+  DotContainer,
+  Dot,
 } from './RideDetail.styled';
 import startingPoint from '../../img/starting-point.png';
 import endingPoint from '../../img/ending-point.png';
@@ -34,11 +33,12 @@ const RideDetail = () => {
   return (
     <>
       <DetailSection>
-        <RideDate>date du trajet</RideDate>
+        <Logo>Logo</Logo>
+        <RideDate>jeudi 1 juin</RideDate>
         <Start>
-          <StartTime>heure de départ</StartTime>
-          <StartingPointImage src={startingPoint} alt='start position' />
-          <StartCity>ville de départ</StartCity>
+          <StartTime>09h15</StartTime>
+          <StartTimeImg src={startingPoint} alt='start position' />
+          <StartCity>Paris</StartCity>
         </Start>
         <DotContainer>
           <Dot />
@@ -46,24 +46,26 @@ const RideDetail = () => {
           <Dot />
         </DotContainer>
         <End>
-          <EndTime>heure d'arrivée</EndTime>
-          <EndingPointImage src={endingPoint} alt='ending position' />
-          <EndCity>ville d'arrivée</EndCity>
+          <EndTime>18h00</EndTime>
+          <EndingPointImg src={endingPoint} alt='ending position' />
+          <EndCity>Lyon</EndCity>
         </End>
         <Price>
           <PriceH1>prix</PriceH1>
-          <PriceValue>€</PriceValue>
+          <PriceValue>30€</PriceValue>
         </Price>
         <Driver>
-          <DriverImage src={steeringWheel} alt='steering wheel' />
-          <DriverName>nom</DriverName>
-          <DriverPP>
-            <DriverPPImage src={driver} alt='jean' />
-          </DriverPP>
+          <DriverImg src={steeringWheel} alt='steering wheel' />
+          <DriverName>Jean Driver</DriverName>
+          <DriverPPImg src={driver} alt='driver pp img' />
         </Driver>
       </DetailSection>
       <InfoSection>
         <ChooseRideButton />
+        <MoreInfoTitle>informations supplémentaires</MoreInfoTitle>
+        <MoreInfoText>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+        </MoreInfoText>
       </InfoSection>
     </>
   );
