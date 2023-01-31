@@ -20,11 +20,15 @@ export const Start = styled.div`
 
 export const StartTime = styled.h1`
   color: black;
+  width: 80px;
 `;
 
 export const StartTimeImg = styled.img`
   height: 30px;
   width: auto;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export const StartCity = styled.h1`
@@ -34,7 +38,7 @@ export const StartCity = styled.h1`
 export const DotContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  margin-left: 100px;
 `;
 
 export const Dot = styled.div`
@@ -52,11 +56,15 @@ export const End = styled.div`
 
 export const EndTime = styled.h1`
   color: black;
+  width: 80px;
 `;
 
 export const EndingPointImg = styled.img`
   height: 30px;
   width: auto;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export const EndCity = styled.h1`
@@ -86,6 +94,7 @@ export const Driver = styled.div`
 export const DriverImg = styled.img`
   height: 30px;
   width: auto;
+  margin-top: 20px;
 `;
 
 export const DriverName = styled.h1``;
@@ -93,6 +102,7 @@ export const DriverName = styled.h1``;
 export const DriverPPImg = styled.img`
   height: 50px;
   width: auto;
+  margin-top: 10px;
 `;
 
 export const InfoSection = styled.section`
