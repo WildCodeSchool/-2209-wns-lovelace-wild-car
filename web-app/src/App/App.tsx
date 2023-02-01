@@ -11,9 +11,11 @@ import {
   HOME_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
+  TRAJECT_SUMMARY,
 } from '../pages/paths';
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
+import TrajectSummary from '../pages/TrajectSummary/TrajectSummary';
 import { Footer, Header, MainContainer } from './App.styled';
 
 const MY_PROFILE = gql`
@@ -32,6 +34,7 @@ function App() {
         <Routes>
           <Route path={HOME_PATH} element={<Home />} />
           <Route path={CREATE_WILDER_PATH} element={<CreateWilder />} />
+          <Route path={TRAJECT_SUMMARY} element={<TrajectSummary />} />
         </Routes>
       </MainContainer>
       <Footer></Footer>
