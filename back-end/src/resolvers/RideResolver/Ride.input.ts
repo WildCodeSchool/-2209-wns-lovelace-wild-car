@@ -26,8 +26,7 @@
    @Field( )
    @IsDate()
   rideDate: Date;
-  
-  
+
 
    @Field()
   @MinLength(1, { message: "L'adresse d'arriver doit faire au moins un caractère de long." })

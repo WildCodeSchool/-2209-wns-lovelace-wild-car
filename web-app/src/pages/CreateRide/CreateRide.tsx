@@ -140,7 +140,7 @@ const CreateRide = () => {
           Date
           <br />
           <input
-            type="datetime-local"
+            type="datetime"
             required
             id="rideDate"
             name="rideDate"
@@ -218,10 +218,13 @@ const CreateRide = () => {
             type="checkbox"
             id="smoker"
             name="smoker"
-            value={"smoker"}
+            checked={smoker}
             onChange={(event) => {
-              setsmoker(Boolean(event.target.value));
+              setsmoker(Boolean(event.target.checked))
+              
             }}
+            
+            
           />
         </label>
         <br />
@@ -232,9 +235,9 @@ const CreateRide = () => {
             type="checkbox"
             id="pet"
             name="pet"
-            value={"pet"}
+            checked={pet}
             onChange={(event) => {
-              setpet(Boolean(event.target.value));
+              setpet(Boolean(event.target.checked));
             }}
           />
         </label>

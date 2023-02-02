@@ -7,7 +7,7 @@ import {
   GetRidesQuery,
 } from "../../gql/graphql";
 
-import blankProfilePicture from "../../media/blank-profile-picture.png";
+
 import { getErrorMessage } from "../../utils";
 import CloseButton from "../CloseButton/CloseButton";
 import Dialog from "../Dialog/Dialog";
@@ -59,7 +59,6 @@ const Ride = ({ id,
 
   return (
     <Card>
-      <CardImage src={blankProfilePicture} alt="" />
       <CardTitle>
         {driverName} 
       </CardTitle>
@@ -70,8 +69,8 @@ const Ride = ({ id,
         Nombre de passager : {maxPassagerNumber} <br></br>
         Place restante : {maxPassagerLeft} <br></br> 
         Prix : {ridePrice}<br></br> 
-        Fumeur : {smoker} <br></br>
-        Animaux : {pet} <br></br>
+        Fumeur : {smoker?"oui":"non"} <br></br>
+        Animaux : {pet?"oui":"non"}  <br></br>
    
      </CardParagraph>
 

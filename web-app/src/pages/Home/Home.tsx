@@ -20,8 +20,8 @@ const GET_RIDES = gql`
         maxPassagerNumber
         maxPassagerLeft
         ridePrice
-     smoker
-     pet
+       smoker
+       pet
      
     }
   }
