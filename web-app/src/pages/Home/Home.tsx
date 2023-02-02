@@ -1,30 +1,35 @@
-/*import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { CardRow } from './Home.styled';
-import Wilder from '../../components/Wilder/Wilder';
+import Ride from '../../components/Ride/Ride';
 import Loader from '../../components/Loader';
 import { SectionTitle } from '../../styles/base-styles';
-import { CREATE_WILDER_PATH } from '../paths';
+import { CREATE_RIDE_PATH } from '../paths';
 import { useQuery, gql } from '@apollo/client';
-import { GetWildersQuery } from '../../gql/graphql';
+import { GetRidesQuery } from '../../gql/graphql';
 
-const GET_WILDERS = gql`
-  query GetWilders {
-    wilders {
+const GET_RIDES = gql`
+  query GetRides {
+    rides {
       id
-      firstName
-      lastName
-      skills {
-        id
-        skillName
-      }
+      driverName
+       departureCity
+      departureAdress
+       rideDate
+        arrivalCity
+        maxPassagerNumber
+        maxPassagerLeft
+        ridePrice
+     smoker
+     pet
+     
     }
   }
 `;
 
 const Home = () => {
-  const { data, loading, error, refetch } = useQuery<GetWildersQuery>(
-    GET_WILDERS,
+  const { data, loading, error, refetch } = useQuery<GetRidesQuery>(
+    GET_RIDES,
     { fetchPolicy: 'cache-and-network' }
   );
 
@@ -35,18 +40,26 @@ const Home = () => {
     if (error) {
       return error.message;
     }
-    if (!data?.wilders?.length) {
-      return 'Aucun wilder à afficher.';
+    if (!data?.rides?.length) {
+      return 'Aucun trajet à afficher.';
     }
     return (
       <CardRow>
-        {data.wilders.map((wilder) => (
-          <Wilder
-            key={wilder.id}
-            id={wilder.id}
-            firstName={wilder.firstName}
-            lastName={wilder.lastName}
-            skills={wilder.skills}
+        {data.rides.map((ride) => (
+          <Ride
+            key={ride.id}
+            id={ride.id}
+            driverName={ride.driverName}
+            departureCity={ride.departureCity}
+            departureAdress={ride.departureAdress}
+            rideDate={ride.rideDate}
+            arrivalCity={ride.arrivalCity}
+            maxPassagerNumber={ride.maxPassagerNumber}
+            maxPassagerLeft={ride.maxPassagerLeft}
+            ridePrice={ride.ridePrice}
+            smoker={ride.smoker}
+            pet={ride.pet}
+           
             onDelete={refetch}
           />
         ))}
@@ -56,17 +69,19 @@ const Home = () => {
 
   return (
     <>
-      <SectionTitle>Wilders</SectionTitle>
-      <Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
+      <SectionTitle>Rides</SectionTitle>
+      <Link to={CREATE_RIDE_PATH}>Ajouter un nouveau Trajets</Link>
       <br />
       <br />
-      <RideCard />
       {renderMainContent()}
     </>
   );
 };
 
-export default Home;*/
+export default Home; 
+
+
+/*
 import RideCard from '../../components/RideCard/RideCard';
 import {
   Main,
@@ -93,4 +108,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home; */

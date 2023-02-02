@@ -1,4 +1,4 @@
- import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate, isDateString, IsDateString } from "class-validator";
+ import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate } from "class-validator";
  import { ArgsType, Field, ID } from "type-graphql";
  
  

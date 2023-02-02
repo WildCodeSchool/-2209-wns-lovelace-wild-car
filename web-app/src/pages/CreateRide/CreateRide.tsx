@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import React from "react";
-import { useState } from "react";
+import { useState  } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader";
@@ -13,17 +13,17 @@ import { SectionTitle } from "../../styles/base-styles";
 import { getErrorMessage } from "../../utils";
 
 const CREATE_RIDE = gql`
-  mutation CreateRide($driverName: string,
-    $departureCity: string,
-    $departureAdress: string,
-    $rideDate: Date,
-    $arrivalCity: string,
-    $maxPassagerNumber: number,
-    $maxPassagerLeft:number,
-    $ridePrice:number,
-    $smoker: boolean,
-    $pet: boolean,) {
-    createWilder(driverName : $driverName, departureCity: $departureCity,
+  mutation CreateRide($driverName: String!,
+    $departureCity: String!,
+    $departureAdress: String!,
+    $rideDate: DateTime!,
+    $arrivalCity: String!,
+    $maxPassagerNumber: Float!,
+    $maxPassagerLeft:Float!,
+    $ridePrice:Float!,
+    $smoker: Boolean!,
+    $pet: Boolean!,) {
+    createRide(driverName : $driverName, departureCity: $departureCity,
       departureAdress: $departureAdress, rideDate: $rideDate, arrivalCity: $arrivalCity, maxPassagerNumber: $maxPassagerNumber, 
       maxPassagerLeft: $maxPassagerLeft, ridePrice: $ridePrice,
      smoker: $smoker, pet: $pet) {
@@ -46,13 +46,13 @@ const CreateRide = () => {
   const [driverName, setdriverName] = useState("");
   const [departureCity, setdepartureCity] = useState("");
   const [departureAdress, setdepartureAdress] = useState("");
-  const [rideDate, setrideDate] = useState("");
+  const [rideDate, setrideDate] = useState(new Date().toLocaleString());
   const [arrivalCity, setarrivalCity] = useState("");
-  const [maxPassagerNumber, setmaxPassagerNumber] = useState("");
-  const [maxPassagerLeft, setmaxPassagerLeft] = useState("");
-  const [ridePrice, setridePrice] = useState("");
-  const [smoker, setsmoker] = useState("");
-  const [pet, setpet] = useState("");
+  const [maxPassagerNumber, setmaxPassagerNumber] = useState<number>(0);
+  const [maxPassagerLeft, setmaxPassagerLeft] = useState<number>(0);
+  const [ridePrice, setridePrice] = useState<number>(0);
+  const [smoker, setsmoker] = useState(false);
+  const [pet, setpet] = useState(false);
 
 
   const [createRide, { loading }] = useMutation<
@@ -70,13 +70,13 @@ const CreateRide = () => {
       setdriverName("");
       setdepartureCity("");
       setdepartureAdress("");
-      setrideDate("");
+      setrideDate(Date);
       setarrivalCity("");
-      setmaxPassagerNumber("");
-      setmaxPassagerLeft("");
-      setridePrice("");
-      setsmoker("");
-      setpet("");
+      setmaxPassagerNumber(Number);
+      setmaxPassagerLeft(Number);
+      setridePrice(Number);
+      setsmoker(Boolean);
+      setpet(Boolean);
     } catch (error) {
       toast.error(getErrorMessage(error));
     }
@@ -140,7 +140,7 @@ const CreateRide = () => {
           Date
           <br />
           <input
-            type="date"
+            type="datetime-local"
             required
             id="rideDate"
             name="rideDate"
@@ -170,13 +170,13 @@ const CreateRide = () => {
           Nombre de passager
           <br />
           <input
-            type="string"
+            type="Float"
             required
             id="maxPassagerNumber"
             name="maxPassagerNumber"
             value={maxPassagerNumber}
             onChange={(event) => {
-              setmaxPassagerNumber(event.target.value);
+              setmaxPassagerNumber(Number(event.target.value));
             }}
           />
         </label>
@@ -185,13 +185,13 @@ const CreateRide = () => {
         Place restante
           <br />
           <input
-            type="text"
+            type="Float"
             required
             id="maxPassagerLeft"
             name="maxPassagerLeft"
             value={maxPassagerLeft}
             onChange={(event) => {
-              setmaxPassagerLeft(event.target.value);
+              setmaxPassagerLeft(Number(event.target.value));
             }}
           />
         </label>
@@ -200,13 +200,13 @@ const CreateRide = () => {
           Prix
           <br />
           <input
-            type="number"
+            type="Float"
             required
             id="ridePrice"
             name="ridePrice"
             value={ridePrice}
             onChange={(event) => {
-              setridePrice(event.target.value);
+              setridePrice(Number(event.target.value));
             }}
           />
         </label>
@@ -215,13 +215,12 @@ const CreateRide = () => {
           Fumeur
           <br />
           <input
-            type="boolean"
-            required
+            type="checkbox"
             id="smoker"
             name="smoker"
-            value={smoker}
+            value={"smoker"}
             onChange={(event) => {
-              setsmoker(event.target.value);
+              setsmoker(Boolean(event.target.value));
             }}
           />
         </label>
@@ -230,13 +229,12 @@ const CreateRide = () => {
           Animaux 
           <br />
           <input
-            type="boolean"
-            required
+            type="checkbox"
             id="pet"
             name="pet"
-            value={pet}
+            value={"pet"}
             onChange={(event) => {
-              setpet(event.target.value);
+              setpet(Boolean(event.target.value));
             }}
           />
         </label>
