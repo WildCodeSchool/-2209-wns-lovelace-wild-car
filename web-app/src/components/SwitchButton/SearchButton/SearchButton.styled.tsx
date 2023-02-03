@@ -7,4 +7,8 @@ export const Button = styled.button`
   width: 140px;
   background-color: white;
   border: none;
+  @media (min-width: 768px) {
+    width: 210px;
+    height: 50px;
+  }
 `;
