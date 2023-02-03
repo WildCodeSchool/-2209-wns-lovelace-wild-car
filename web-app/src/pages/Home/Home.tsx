@@ -82,6 +82,11 @@ export default Home;
 
 
 /*
+
+export default Home;*/
+import Form from '../../components/Form/Form';
+import SwitchButton from '../../components/SwitchButton/SwithButton';
+
 import RideCard from '../../components/RideCard/RideCard';
 import {
   Main,
@@ -96,8 +101,10 @@ const Home = () => {
   return (
     <Main>
       <ResearchSection>
-        <SwitchSection></SwitchSection>
-        <ResearchBloc></ResearchBloc>
+        {/* <SwitchSection></SwitchSection> */}
+        <SwitchButton />
+        {/* <ResearchBloc></ResearchBloc> */}
+        <Form />
       </ResearchSection>
       <ResultSection>
         <RideCard></RideCard>
