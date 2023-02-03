@@ -67,7 +67,7 @@ export default class Ride {
   @Field(() => Date)
   rideDate: Date;
 
-
+  
 
   @Column()
   @Field(() => String)

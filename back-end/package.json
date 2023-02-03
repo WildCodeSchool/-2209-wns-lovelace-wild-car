@@ -1,5 +1,5 @@
 {
-  "name": "ws-0922-live-coding",
+  "name": "2209-wns-lovelace-wild-car",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.11",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.3.9"
+    "typeorm": "^0.3.11"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
