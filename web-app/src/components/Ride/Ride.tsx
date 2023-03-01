@@ -11,6 +11,7 @@ import {
 import { getErrorMessage } from "../../utils";
 import CloseButton from "../CloseButton/CloseButton";
 import Dialog from "../Dialog/Dialog";
+import RideCard from "../RideCard/RideCard";
 
 import {
   Card,
@@ -58,6 +59,7 @@ const Ride = ({ id,
   };
 
   return (
+     <>
     <Card>
       <CardTitle>
         {driverName} 
@@ -65,16 +67,14 @@ const Ride = ({ id,
       <CardParagraph> Ville de départ : {departureCity} <br></br>
        Adresse de départ : {departureAdress} <br></br> 
        Date : {rideDate} <br></br> 
-       Déestination : {arrivalCity} <br></br> 
+       Déstination : {arrivalCity} <br></br> 
         Nombre de passager : {maxPassagerNumber} <br></br>
         Place restante : {maxPassagerLeft} <br></br> 
         Prix : {ridePrice}<br></br> 
         Fumeur : {smoker?"oui":"non"} <br></br>
         Animaux : {pet?"oui":"non"}  <br></br>
-   
-     </CardParagraph>
 
-      
+     </CardParagraph>
       <CloseButton onClick={onCloseButtonClick} />
       {showDeleteConfirmation && (
         <Dialog
@@ -88,7 +88,12 @@ const Ride = ({ id,
         />
       )}
     </Card>
+    <RideCard />
+    </>
   );
 };
 
 export default Ride;
+
+
+

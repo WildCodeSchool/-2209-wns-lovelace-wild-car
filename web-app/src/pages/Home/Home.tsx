@@ -7,6 +7,18 @@ import { SectionTitle } from '../../styles/base-styles';
 import { CREATE_RIDE_PATH } from '../paths';
 import { useQuery, gql } from '@apollo/client';
 import { GetRidesQuery } from '../../gql/graphql';
+import Form from '../../components/Form/Form';
+import SwitchButton from '../../components/SwitchButton/SwithButton';
+
+import RideCard from '../../components/RideCard/RideCard';
+import {
+  Main,
+  ResearchSection,
+  ResultSection,
+  SwitchSection,
+  ResearchBloc,
+  TravelCard,
+} from './Home.styled';
 
 const GET_RIDES = gql`
   query GetRides {
@@ -44,26 +56,30 @@ const Home = () => {
       return 'Aucun trajet à afficher.';
     }
     return (
+      <>
+      
+      <ResearchSection>
+         <SwitchSection></SwitchSection> 
+        <SwitchButton />
+         <ResearchBloc></ResearchBloc> 
+        <Form />
+      </ResearchSection>
+
       <CardRow>
         {data.rides.map((ride) => (
-          <Ride
+          <RideCard
             key={ride.id}
             id={ride.id}
-            driverName={ride.driverName}
-            departureCity={ride.departureCity}
-            departureAdress={ride.departureAdress}
-            rideDate={ride.rideDate}
-            arrivalCity={ride.arrivalCity}
-            maxPassagerNumber={ride.maxPassagerNumber}
-            maxPassagerLeft={ride.maxPassagerLeft}
-            ridePrice={ride.ridePrice}
-            smoker={ride.smoker}
-            pet={ride.pet}
-           
+            driverNameData={ride.driverName}
+            departureCityData={ride.departureCity}
+            rideDateData={ride.rideDate}
+            arrivalCityData={ride.arrivalCity}
+            maxPassagerNumberData={ride.maxPassagerNumber}
             onDelete={refetch}
           />
         ))}
       </CardRow>
+      </>
     );
   };
 
@@ -82,7 +98,7 @@ export default Home;
 
 
 /*
-
++
 export default Home;
 import Form from '../../components/Form/Form';
 import SwitchButton from '../../components/SwitchButton/SwithButton';
