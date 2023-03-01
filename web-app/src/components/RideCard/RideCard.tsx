@@ -21,6 +21,7 @@ import {
   DriverPP,
   DriverPPImage,
 } from './RideCard.styled';
+
 import startingPoint from '../../img/starting-point.png';
 import endingPoint from '../../img/ending-point.png';
 import steeringWheel from '../../img/steering-wheel.png';
@@ -29,14 +30,16 @@ import time from '../../img/time.png';
 import calendar from '../../img/calendar.png';
 import driver from '../../img/driver.png';
 
-const RideCard = () => {
+const RideCard = ({
+  driverNameData,departureCityData,  rideDateData,
+  arrivalCityData, maxPassagerNumberData,}) => {
   return (
     <Main>
       <LeftSide>
         <DistanceBetweenPoint>
           <StartingPoint>
             <StartingPointImage src={startingPoint} alt="start position" />
-            lyon
+            {departureCityData}
           </StartingPoint>
           <DotContainer>
             <Dot />
@@ -45,15 +48,16 @@ const RideCard = () => {
           </DotContainer>
           <EndingPoint>
             <EndingPointImage src={endingPoint} alt="ending position" />
-            paris
+            {arrivalCityData}
           </EndingPoint>
         </DistanceBetweenPoint>
         <Driver>
           <DriverImage src={steeringWheel} alt="steering wheel" />
-          Dave Lopper
+          {driverNameData}
         </Driver>
         <Passenger>
-          <PassengerImage src={passengers} alt="passengers" />3
+          <PassengerImage src={passengers} alt="passengers" />
+          {maxPassagerNumberData}
         </Passenger>
       </LeftSide>
       <RightSide>
@@ -63,7 +67,7 @@ const RideCard = () => {
         </Time>
         <Calendar>
           <CalendarImage src={calendar} alt="calendar" />
-          jeu 15
+          {rideDateData}
         </Calendar>
         <DriverPP>
           <DriverPPImage src={driver} alt="jean" />
