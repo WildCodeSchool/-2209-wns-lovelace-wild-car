@@ -38,7 +38,7 @@ function App() {
 
 
           <Route path={RIDE_DETAIL_PATH} element={<RideDetail />} />
-          <Route path={CREATE_RIDE_PATH}} element={<CreateRide />} />
+          <Route path={CREATE_RIDE_PATH} element={<CreateRide />} />
           <Route path={TRAJECT_SUMMARY} element={<TrajectSummary />} />
 
         </Routes>
