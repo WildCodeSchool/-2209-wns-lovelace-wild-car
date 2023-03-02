@@ -4,7 +4,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { MyProfileQuery } from '../gql/graphql';
 
-import CreateRide from '../pages/CreateRide/CreateRide';
+
 import Home from '../pages/Home/Home';
 import {
   CREATE_RIDE_PATH,
@@ -38,7 +38,6 @@ function App() {
 
 
           <Route path={RIDE_DETAIL_PATH} element={<RideDetail />} />
-          <Route path={CREATE_RIDE_PATH} element={<CreateRide />} />
           <Route path={TRAJECT_SUMMARY} element={<TrajectSummary />} />
 
         </Routes>
