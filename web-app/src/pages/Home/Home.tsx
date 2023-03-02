@@ -4,7 +4,7 @@ import { CardRow } from './Home.styled';
 import Ride from '../../components/Ride/Ride';
 import Loader from '../../components/Loader';
 import { SectionTitle } from '../../styles/base-styles';
-import { CREATE_RIDE_PATH } from '../paths';
+import { CREATE_RIDE_PATH, TRAJECT_SUMMARY } from '../paths';
 import { useQuery, gql } from '@apollo/client';
 import { GetRidesQuery } from '../../gql/graphql';
 import Form from '../../components/Form/Form';
@@ -86,7 +86,7 @@ const Home = () => {
   return (
     <>
       <SectionTitle>Rides</SectionTitle>
-      <Link to={CREATE_RIDE_PATH}>Ajouter un nouveau Trajets</Link>
+      <Link to={TRAJECT_SUMMARY}>Je Propose </Link>
       <br />
       <br />
       {renderMainContent()}
@@ -97,38 +97,4 @@ const Home = () => {
 export default Home; 
 
 
-/*
-+
-export default Home;
-import Form from '../../components/Form/Form';
-import SwitchButton from '../../components/SwitchButton/SwithButton';
 
-import RideCard from '../../components/RideCard/RideCard';
-import {
-  Main,
-  ResearchSection,
-  ResultSection,
-  SwitchSection,
-  ResearchBloc,
-  TravelCard,
-} from './Home.styled';
-
-const Home = () => {
-  return (
-    <Main>
-      <ResearchSection>
-        {/* <SwitchSection></SwitchSection> }
-        <SwitchButton />
-        {/* <ResearchBloc></ResearchBloc> }
-        <Form />
-      </ResearchSection>
-      <ResultSection>
-        <RideCard></RideCard>
-        <RideCard></RideCard>
-        <RideCard></RideCard>
-      </ResultSection>
-    </Main>
-  );
-};
-
-export default Home; */
