@@ -7,7 +7,6 @@ import { MyProfileQuery } from '../gql/graphql';
 
 import Home from '../pages/Home/Home';
 import {
-  CREATE_RIDE_PATH,
   HOME_PATH,
   RIDE_DETAIL_PATH,
   SIGN_IN_PATH,

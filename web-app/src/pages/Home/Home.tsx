@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardRow } from './Home.styled';
-import Ride from '../../components/Ride/Ride';
 import Loader from '../../components/Loader';
 import { SectionTitle } from '../../styles/base-styles';
-import { CREATE_RIDE_PATH, TRAJECT_SUMMARY } from '../paths';
+import {  TRAJECT_SUMMARY } from '../paths';
 import { useQuery, gql } from '@apollo/client';
 import { GetRidesQuery } from '../../gql/graphql';
 import Form from '../../components/Form/Form';
 import SwitchButton from '../../components/SwitchButton/SwithButton';
 
-import RideCard from '../../components/RideCard/RideCard';
+import Ride from '../../components/Ride/Ride';
 import {
   Main,
   ResearchSection,
@@ -65,28 +63,32 @@ const Home = () => {
         <Form />
       </ResearchSection>
 
-      <CardRow>
         {data.rides.map((ride) => (
-          <RideCard
+          <Ride
             key={ride.id}
             id={ride.id}
-            driverNameData={ride.driverName}
-            departureCityData={ride.departureCity}
-            rideDateData={ride.rideDate}
-            arrivalCityData={ride.arrivalCity}
-            maxPassagerNumberData={ride.maxPassagerNumber}
+            driverName={ride.driverName}
+            departureCity={ride.departureCity}
+            departureAdress={ride.departureAdress}
+            rideDate={ride.rideDate}
+            arrivalCity={ride.arrivalCity}
+            maxPassagerNumber={ride.maxPassagerNumber}
+            maxPassagerLeft={ride.maxPassagerLeft}
+            ridePrice={ride.ridePrice}
+            smoker={ride.smoker}
+            pet={ride.pet}
+            
             onDelete={refetch}
           />
         ))}
-      </CardRow>
+     
       </>
     );
   };
 
   return (
     <>
-      <SectionTitle>Rides</SectionTitle>
-      <Link to={TRAJECT_SUMMARY}>Je Propose </Link>
+      <SectionTitle>Wild - Car</SectionTitle>
       <br />
       <br />
       {renderMainContent()}

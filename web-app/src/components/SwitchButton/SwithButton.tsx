@@ -5,7 +5,7 @@ import { Centered } from './SwitchButton.styled';
 const SwitchButton = () => {
   return (
     <Centered>
-      <ProposeButton />
+      <ProposeButton /> 
       <SearchButton />
     </Centered>
   );
