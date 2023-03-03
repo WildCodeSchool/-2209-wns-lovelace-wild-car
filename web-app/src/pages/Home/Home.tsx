@@ -56,12 +56,7 @@ const Home = () => {
     return (
       <>
       
-      <ResearchSection>
-         <SwitchSection></SwitchSection> 
-        <SwitchButton />
-         <ResearchBloc></ResearchBloc> 
-        <Form />
-      </ResearchSection>
+  
 
         {data.rides.map((ride) => (
           <Ride
@@ -91,6 +86,12 @@ const Home = () => {
       <SectionTitle>Wild - Car</SectionTitle>
       <br />
       <br />
+      <ResearchSection>
+         <SwitchSection></SwitchSection> 
+        <SwitchButton />
+         <ResearchBloc></ResearchBloc> 
+        <Form />
+      </ResearchSection>
       {renderMainContent()}
     </>
   );
