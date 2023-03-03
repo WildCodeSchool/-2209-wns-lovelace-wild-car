@@ -1,14 +1,55 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Home from './screens/Home';
+import HomeRecherche from './screens/HomeRecherche';
+import HomeProposer from './screens/HomeProposer';
 import Settings from './screens/Settings';
 import Trips from './screens/Trips';
 import { StatusBar } from 'expo-status-bar';
 import { Text, StyleSheet, View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
+
+const StackNavigatorHomeScreen = createStackNavigator();
+
+function getHeaderBackgroundColor(routeName) {
+  if (routeName === 'homeRecherche') {
+    return '#f4511e';
+  } else {
+    return '#24539D';
+  }
+}
+
+function StackNavigatorHome({ navigation, route }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: getHeaderBackgroundColor(route.name),
+        height: 50,
+      },
+      headerTitle: () => null,
+    });
+  }, [navigation, route]);
+
+  return (
+    <StackNavigatorHomeScreen.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <StackNavigatorHomeScreen.Screen
+        name="homeRecherche"
+        component={HomeRecherche}
+      />
+      <StackNavigatorHomeScreen.Screen
+        name="homeProposer"
+        component={HomeProposer}
+      />
+    </StackNavigatorHomeScreen.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -30,31 +71,20 @@ export default function App() {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
 
-          tabBarActiveTintColor: 'white',
-          tabBarInactiveTintColor: '#952604',
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: '#535353',
           tabBarStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: 'white',
           },
+          headerShown: false,
         })}
       >
-        <Tab.Screen
-          name="Accueil"
-          component={Home}
-          options={{
-            unmountOnBlur: true,
-            headerStyle: {
-              height: 50,
-              backgroundColor: '#f4511e',
-            },
-            headerTitle: () => null,
-          }}
-        />
+        <Tab.Screen name="Accueil" component={StackNavigatorHome} />
 
         <Tab.Screen
           name="Mes trajets"
           component={Trips}
           options={{
-            unmountOnBlur: true,
             headerStyle: {
               height: 50,
               backgroundColor: '#f4511e',
@@ -67,7 +97,6 @@ export default function App() {
           name="Paramètres"
           component={Settings}
           options={{
-            unmountOnBlur: true,
             headerStyle: {
               height: 50,
               backgroundColor: '#f4511e',
