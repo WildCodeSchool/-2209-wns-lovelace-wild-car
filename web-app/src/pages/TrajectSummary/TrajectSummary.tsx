@@ -1,4 +1,4 @@
-import Counter from './Counter';
+
 import {
   Main,
   Recap,
@@ -25,6 +25,7 @@ import {
 } from "../../gql/graphql";
 
 import { getErrorMessage } from "../../utils";
+
 
 
 
@@ -109,6 +110,7 @@ const TrajectSummary = () => {
         }}
       >
         <BigTitle>Finalisez la création de votre trajet !</BigTitle>
+   
 
         <MainContainer>
           <Recap>
@@ -325,8 +327,10 @@ const TrajectSummary = () => {
             
                   </button>
         </ButtonContainer>
+        
       </form>
     </Main>
+    
   );
 
 };
