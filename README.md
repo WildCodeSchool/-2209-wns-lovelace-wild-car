@@ -11,4 +11,3 @@ Docker and Docker Compose are required on host system.
 ```
 
 exécuter pour démarrer le projet - docker compose -f docker-compose.dev.yml up --build
-x

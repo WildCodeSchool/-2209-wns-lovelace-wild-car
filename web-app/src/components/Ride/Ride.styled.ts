@@ -1,59 +1,196 @@
-import styled, { css } from "styled-components";
+import styled from 'styled-components';
 
-import { BORDER_COLOR, MAIN_THEME_COLOR } from "../../styles/style-constants";
-import { baseTitleStyles, Paragraph } from "../../styles/base-styles";
-
-export const Card = styled.article`
-  position: relative;
-  width: 200px;
-  padding: 20px;
-  border: 1px solid ${BORDER_COLOR};
-  border-radius: 7px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-`;
-
-export const CardImage = styled.img`
-  border-radius: 7px 7px 0 0;
-  margin-bottom: 20px;
-  max-width: 100%;
-  height: auto;
-`;
-
-export const CardTitle = styled.h3`
-  ${baseTitleStyles}
-  color: ${MAIN_THEME_COLOR};
-  font-size: 20px;
-`;
-
-export const CardSecondaryTitle = styled.h4`
-  color: ${MAIN_THEME_COLOR};
-  font-size: 15px;
-`;
-
-const cardPropertiesStyled = css`
-  color: #757575;
-  line-height: 1.5;
-`;
-
-export const CardParagraph = styled(Paragraph)`
-  ${cardPropertiesStyled}
-`;
-
-export const CardSkillList = styled.ul`
-  ${cardPropertiesStyled}
-  margin: 0;
-  padding: 0;
-  list-style: none;
+export const Main = styled.article`
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  width: 80%;
+  height: 27vh;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.25);
+  background-color: white;
+  margin: 20px 0px;
 
-  & li {
-    margin: 4px 0;
-    display: flex;
-    justify-content: space-around;
-    border: #f76c6c 1px solid;
-    border-radius: 4px;
-    padding: 2px;
+  @media (min-width: 768px) {
+    height: 23vh;
   }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 0px 0px 25px 25px;
+  background-color: #ffa553;
+  color: white;
+  font-weight: 600;
+`;
+
+export const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  height: 170px;
+  padding: 10px 0px 10px 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: 100px;
+  }
+`;
+
+export const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  height: 170px;
+  padding: 10px 0px 10px 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: 100px;
+  }
+`;
+
+export const DistanceBetweenPoint = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: bold;
+  width: 100%;
+  color: #535353;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+  }
+`;
+
+export const StartingPointImage = styled.img`
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+`;
+
+export const StartingPoint = styled.article`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EndingPointImage = styled.img`
+  width: 12px;
+  margin-right: 10px;
+`;
+
+export const EndingPoint = styled.article`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DotContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 0px 2px 5px;
+  height: 30px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 30px;
+    align-items: center;
+    margin-right: 8px;
+  }
+`;
+
+export const Dot = styled.div`
+  width: 4px;
+  height: 4px;
+  background-color: #dfdfdf;
+  border-radius: 20px;
+`;
+
+export const Driver = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: #535353;
+  font-weight: bold;
+`;
+
+export const DriverImage = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+`;
+
+export const Passenger = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: #535353;
+  font-weight: bold;
+`;
+
+export const PassengerImage = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+`;
+
+export const Time = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: #535353;
+  font-weight: bold;
+`;
+
+export const TimeImage = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+`;
+
+export const Calendar = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: #535353;
+  font-weight: bold;
+`;
+
+export const CalendarImage = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+`;
+
+export const DriverPP = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
+export const DriverPPImage = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
 `;
