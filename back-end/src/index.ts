@@ -13,6 +13,7 @@ import AppUserRepository from "./models/AppUser/AppUser.repository";
 import SessionRepository from "./models/AppUser/Session.repository";
 import { getSessionIdInCookie } from "./http-utils";
 import AppUser from "./models/AppUser/AppUser.entity";
+import { IS_PRODUCTION } from "./config";
 
 export type GlobalContext = ExpressContext & {
   user: AppUser | null;
@@ -48,7 +49,12 @@ const startServer = async () => {
 
   // The `listen` method launches a web server.
   const { url } = await server.listen();
+
+  if (!IS_PRODUCTION){
+
   await RideRepository.initializeRepository();
+
+}
 
 
   console.log(`🚀  Server ready at ${url}`);
