@@ -1,33 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
+import { SectionTitle } from '../../styles/base-styles';
+import { TRAJECT_SUMMARY } from '../paths';
+import { useQuery, gql } from '@apollo/client';
+import { GetRidesQuery } from '../../gql/graphql';
+import Form from '../../components/Form/Form';
+import SwitchButton from '../../components/SwitchButton/SwithButton';
 
-import { CardRow } from "./Home.styled";
-import Wilder from "../../components/Wilder/Wilder";
-import Loader from "../../components/Loader";
-import { SectionTitle } from "../../styles/base-styles";
-import { CREATE_WILDER_PATH } from "../paths";
-import { useQuery, gql } from "@apollo/client";
-import { GetWildersQuery } from "../../gql/graphql";
+import Ride from '../../components/Ride/Ride';
+import {
+  Main,
+  ResearchSection,
+  ResultSection,
+  SwitchSection,
+  ResearchBloc,
+  TravelCard,
+} from './Home.styled';
 
-const GET_WILDERS = gql`
-  query GetWilders {
-    wilders {
+const GET_RIDES = gql`
+  query GetRides {
+    rides {
       id
-      firstName
-      lastName
-      skills {
-        id
-        skillName
-      }
+      driverName
+      departureCity
+      departureAdress
+      rideDate
+      arrivalCity
+      maxPassagerNumber
+      maxPassagerLeft
+      ridePrice
+      smoker
+      pet
     }
   }
 `;
 
 const Home = () => {
-  const { data, loading, error, refetch } = useQuery<GetWildersQuery>(
-    GET_WILDERS,
-    { fetchPolicy: "cache-and-network" }
-  );
+  const { data, loading, error, refetch } = useQuery<GetRidesQuery>(GET_RIDES, {
+    fetchPolicy: 'cache-and-network',
+  });
 
   const renderMainContent = () => {
     if (loading) {
@@ -36,32 +48,39 @@ const Home = () => {
     if (error) {
       return error.message;
     }
-    if (!data?.wilders?.length) {
-      return "Aucun wilder à afficher.";
+    if (!data?.rides?.length) {
+      return 'Aucun trajet à afficher.';
     }
     return (
-      <CardRow>
-        {data.wilders.map((wilder) => (
-          <Wilder
-            key={wilder.id}
-            id={wilder.id}
-            firstName={wilder.firstName}
-            lastName={wilder.lastName}
-            skills={wilder.skills}
+      <>
+        {data.rides.map((ride) => (
+          <Ride
+            key={ride.id}
+            id={ride.id}
+            driverName={ride.driverName}
+            departureCity={ride.departureCity}
+            departureAdress={ride.departureAdress}
+            rideDate={ride.rideDate}
+            arrivalCity={ride.arrivalCity}
+            maxPassagerNumber={ride.maxPassagerNumber}
+            maxPassagerLeft={ride.maxPassagerLeft}
+            ridePrice={ride.ridePrice}
+            smoker={ride.smoker}
+            pet={ride.pet}
             onDelete={refetch}
           />
         ))}
-      </CardRow>
+      </>
     );
   };
 
   return (
     <>
-      <SectionTitle>Wilders</SectionTitle>
-      <Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
-      <br />
-      <br />
-      {renderMainContent()}
+      <ResearchSection>
+        <SwitchButton />
+        <Form />
+        {renderMainContent()}
+      </ResearchSection>
     </>
   );
 };

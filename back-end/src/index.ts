@@ -4,16 +4,16 @@ import { ExpressContext } from "apollo-server-express";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { buildSchema } from "type-graphql";
 
-import SchoolRepository from "./models/School/School.repository";
-import SkillRepository from "./models/Skill/Skill.repository";
-import WilderRepository from "./models/Wilder/Wilder.repository";
+import RideRepository from "./models/Ridedb/Ride.repository";
 
-import WilderResolver from "./resolvers/Wilder/Wilder.resolver";
+
+import RideResolver from "./resolvers/RideResolver/Ride.resolver";
 import AppUserResolver from "./resolvers/AppUser/AppUser.resolver";
 import AppUserRepository from "./models/AppUser/AppUser.repository";
 import SessionRepository from "./models/AppUser/Session.repository";
 import { getSessionIdInCookie } from "./http-utils";
 import AppUser from "./models/AppUser/AppUser.entity";
+import { IS_PRODUCTION } from "./config";
 
 export type GlobalContext = ExpressContext & {
   user: AppUser | null;
@@ -22,7 +22,7 @@ export type GlobalContext = ExpressContext & {
 const startServer = async () => {
   const server = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [WilderResolver, AppUserResolver],
+      resolvers: [RideResolver, AppUserResolver],
       authChecker: async ({ context }) => {
         return Boolean(context.user);
       },
@@ -49,15 +49,13 @@ const startServer = async () => {
 
   // The `listen` method launches a web server.
   const { url } = await server.listen();
-  await SkillRepository.initializeRepository();
-  await SchoolRepository.initializeRepository();
-  await WilderRepository.initializeRepository();
-  await AppUserRepository.initializeRepository();
-  await SessionRepository.initializeRepository();
 
-  await SkillRepository.initializeSkills();
-  await SchoolRepository.initializeSchools();
-  await WilderRepository.initializeWilders();
+  if (!IS_PRODUCTION){
+
+  await RideRepository.initializeRepository();
+
+}
+
 
   console.log(`🚀  Server ready at ${url}`);
 };
