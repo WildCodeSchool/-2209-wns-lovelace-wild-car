@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import { SectionTitle } from '../../styles/base-styles';
-import {  TRAJECT_SUMMARY } from '../paths';
+import { TRAJECT_SUMMARY } from '../paths';
 import { useQuery, gql } from '@apollo/client';
 import { GetRidesQuery } from '../../gql/graphql';
 import Form from '../../components/Form/Form';
@@ -23,25 +23,23 @@ const GET_RIDES = gql`
     rides {
       id
       driverName
-       departureCity
+      departureCity
       departureAdress
-       rideDate
-        arrivalCity
-        maxPassagerNumber
-        maxPassagerLeft
-        ridePrice
-       smoker
-       pet
-     
+      rideDate
+      arrivalCity
+      maxPassagerNumber
+      maxPassagerLeft
+      ridePrice
+      smoker
+      pet
     }
   }
 `;
 
 const Home = () => {
-  const { data, loading, error, refetch } = useQuery<GetRidesQuery>(
-    GET_RIDES,
-    { fetchPolicy: 'cache-and-network' }
-  );
+  const { data, loading, error, refetch } = useQuery<GetRidesQuery>(GET_RIDES, {
+    fetchPolicy: 'cache-and-network',
+  });
 
   const renderMainContent = () => {
     if (loading) {
@@ -55,13 +53,12 @@ const Home = () => {
     }
     return (
       <>
-      
-      <ResearchSection>
-         <SwitchSection></SwitchSection> 
-        <SwitchButton />
-         <ResearchBloc></ResearchBloc> 
-        <Form />
-      </ResearchSection>
+        <ResearchSection>
+          <SwitchSection></SwitchSection>
+          <SwitchButton />
+          <ResearchBloc></ResearchBloc>
+          <Form />
+        </ResearchSection>
 
         {data.rides.map((ride) => (
           <Ride
@@ -77,11 +74,9 @@ const Home = () => {
             ridePrice={ride.ridePrice}
             smoker={ride.smoker}
             pet={ride.pet}
-            
             onDelete={refetch}
           />
         ))}
-     
       </>
     );
   };
@@ -96,7 +91,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
-
-
-
+export default Home;
