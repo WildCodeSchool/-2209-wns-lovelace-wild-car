@@ -1,4 +1,4 @@
- import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate } from "class-validator";
+ import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate, IsDateString } from "class-validator";
  import { ArgsType, Field, ID } from "type-graphql";
  
  
@@ -23,7 +23,7 @@
   @MinLength(1, { message: "L'adresse de départ doit faire au moins un caractère de long." })
   departureAdress: string;
 
-   @Field( )
+   @Field()
    @IsDate()
   rideDate: Date;
 
