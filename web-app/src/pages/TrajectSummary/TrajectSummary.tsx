@@ -123,15 +123,7 @@ const TrajectSummary = () => {
       });
       const maDate = new Date(rideDate);
       toast.success(`Bonjour ${driverName} 
-      votre trajet au départ de ${departureCity}
-       à l'adresse ${departureAdress} 
-       au date du ${maDate.toLocaleString()}
-        à déstination de ${arrivalCity} 
-        avec ${maxPassagerNumber} passager
-      ${maxPassagerLeft} au prix de ${ridePrice}
-       fumeur ${smoker} 
-       animaux ${pet} 
-       a étais crée avec succès.`);
+      votre trajet a été crée avec succès.`);
       setdriverName("");
       setdepartureCity("");
       setdepartureAdress("");
@@ -149,18 +141,19 @@ const TrajectSummary = () => {
 
   return (
     <Main>
-      {/* <form
+      <form
         onSubmit={async (event) => {
           event.preventDefault();
           await submit();
         }}
       >
+        <HeaderContainer />
+        <SwitchButton />
         <BigTitle>Finalisez la création de votre trajet !</BigTitle>
-
-        <MainContainer>
-          <Recap>
-            <RecapContainer>
-              <Title>Récapitulatif</Title>
+        <Recap>Récapitulatif</Recap>
+        <FormBlock>
+          <Block>
+            <MainInfo>
               <Title>
                 {" "}
                 <label>
@@ -178,333 +171,75 @@ const TrajectSummary = () => {
                   />
                 </label>
               </Title>
-              <Departure>
-                {" "}
-                <label>
-                  Ville de départ
-                  <br />
-                  <input
-                    type="text"
-                    required
-                    id="departureCity"
-                    name="departureCity"
-                    value={departureCity}
-                    onChange={(event) => {
-                      setdepartureCity(event.target.value);
-                    }}
-                  />
-                </label>
-                <label>
-                  Adresse de départ
-                  <br />
-                  <input
-                    type="text"
-                    required
-                    id="departureAdress"
-                    name="departureAdress"
-                    value={departureAdress}
-                    onChange={(event) => {
-                      setdepartureAdress(event.target.value);
-                    }}
-                  />
-                </label>
-              </Departure>
-              <Arrival>
-                <label>
-                  Déstination
-                  <br />
-                  <input
-                    type="text"
-                    required
-                    id="arrivalCity"
-                    name="arrivalCity"
-                    value={arrivalCity}
-                    onChange={(event) => {
-                      setarrivalCity(event.target.value);
-                    }}
-                  />
-                </label>{" "}
-              </Arrival>
-              <DriveDate>
-                <label>
-                  Date
-                  <br />
-                  <input
-                    type="datetime-local"
-                    required
-                    id="rideDate"
-                    name="rideDate"
-                    value={rideDate}
-                    onChange={(event) => {
-                      setrideDate(event.target.value);
-                    }}
-                  />
-                </label>
-              </DriveDate>
-              <NumberPlaceSetted>
-                <label>
-                  Nombre de passager
-                  <br />
-                  <input
-                    type="Float"
-                    required
-                    id="maxPassagerNumber"
-                    name="maxPassagerNumber"
-                    value={maxPassagerNumber}
-                    onChange={(event) => {
-                      setmaxPassagerNumber(Number(event.target.value));
-                    }}
-                  />
-                </label>
-                <label>
-                  Fumeur
-                  <br />
-                  <input
-                    type="checkbox"
-                    id="smoker"
-                    name="smoker"
-                    checked={smoker}
-                    onChange={(event) => {
-                      setsmoker(Boolean(event.target.checked));
-                    }}
-                  />
-                </label>
-              </NumberPlaceSetted>
-            </RecapContainer>
-          </Recap>
-          <FormContainer>
-      > */}
-      <HeaderContainer />
-      <SwitchButton />
-      <BigTitle>Finalisez la création de votre trajet !</BigTitle>
-      <Recap>Récapitulatif</Recap>
-      <FormBlock>
-        <Block>
-          <MainInfo>
-            <RideStart>
-              départ <StartInput />
-            </RideStart>
-            <RideEnd>
-              arrivée <EndInpute />
-            </RideEnd>
-            <RideDate>
-              date <DateInput />
-            </RideDate>
-            <RideSeat>
-              nombre de place disponible <SeatInput />
-            </RideSeat>
-            <RidePrice>
-              prix de votre trajet <PriceInput />
-            </RidePrice>
-          </MainInfo>
-          <SuppInfo>
-            <InfoTitle>informations complémentaires</InfoTitle>
-            <Animal>
-              acceptez-vous les animaux ? <AnimalInputYes type="radio" /> oui{" "}
-              <AnimalInputNo type="radio" /> non
-            </Animal>
-            <Smoker>
-              accaptez-vous les fumeurs ? <SmokerInputYes type="radio" /> oui{" "}
-              <SmokerInputNo type="radio" /> non
-            </Smoker>
-          </SuppInfo>
-        </Block>
-        <ButtonContainer>
-          <GoButton>Go !</GoButton>
-        </ButtonContainer>
-      </FormBlock>
-    </Main>
-  );
-};
-
-export default TrajectSummary;
-/* <MainContainer> */
-/* <Recap> */
-/* <RecapContainer>
-            <Title>Récapitulatif</Title>
-            <Title>
-              {' '}
-              <label>
-                Prénom
-                <br />
-                <input
-                  type='text'
+              <RideStart>
+                Ville départ{" "}
+                <StartInput
+                  type="text"
                   required
-                  id='driverName'
-                  name='driverName'
-                  value={driverName}
-                  onChange={(event) => {
-                    setdriverName(event.target.value);
-                  }}
-                />
-              </label>
-            </Title>
-            <Departure>
-              {' '}
-              <label>
-                Ville de départ
-                <br />
-                <input
-                  type='text'
-                  required
-                  id='departureCity'
-                  name='departureCity'
+                  id="departureCity"
+                  name="departureCity"
                   value={departureCity}
                   onChange={(event) => {
                     setdepartureCity(event.target.value);
                   }}
                 />
-              </label>
+              </RideStart>
               <label>
                 Adresse de départ
                 <br />
                 <input
-                  type='text'
+                  type="text"
                   required
-                  id='departureAdress'
-                  name='departureAdress'
+                  id="departureAdress"
+                  name="departureAdress"
                   value={departureAdress}
                   onChange={(event) => {
                     setdepartureAdress(event.target.value);
                   }}
                 />
               </label>
-            </Departure>
-            <Arrival>
-              <label>
-                Destination
-                <br />
-                <input
-                  type='text'
+              <RideEnd>
+                Déstination{" "}
+                <EndInpute
+                  type="text"
                   required
-                  id='arrivalCity'
-                  name='arrivalCity'
+                  id="arrivalCity"
+                  name="arrivalCity"
                   value={arrivalCity}
                   onChange={(event) => {
                     setarrivalCity(event.target.value);
                   }}
                 />
-              </label>{' '}
-            </Arrival>
-            <DriveDate>
-              {' '}
-              <label>
-                Date
-                <br />
-                <input
-                  type='datetime'
+              </RideEnd>
+              <RideDate>
+                date{" "}
+                <DateInput
+                  type="datetime-local"
                   required
-                  id='rideDate'
-                  name='rideDate'
+                  id="rideDate"
+                  name="rideDate"
                   value={rideDate}
                   onChange={(event) => {
                     setrideDate(event.target.value);
                   }}
                 />
-              </label>
-            </DriveDate>
-            <NumberPlaceSetted>
-              <label>
-                Nombre de passager
-                <br />
-                <input
-                  type='Float'
+              </RideDate>
+              <RideSeat>
+                nombre de place disponible{" "}
+                <SeatInput
+                  type="Float"
                   required
-                  id='maxPassagerNumber'
-                  name='maxPassagerNumber'
+                  id="maxPassagerNumber"
+                  name="maxPassagerNumber"
                   value={maxPassagerNumber}
                   onChange={(event) => {
                     setmaxPassagerNumber(Number(event.target.value));
                   }}
                 />
-              </label>
-              <label>
-                Fumeur
-                <br />
-                <input
-                  type='checkbox'
-                  id='smoker'
-                  name='smoker'
-                  checked={smoker}
-                  onChange={(event) => {
-                    setsmoker(Boolean(event.target.checked));
-                  }}
-                />
-              </label>
-            </NumberPlaceSetted>
-          </RecapContainer>
-          </Recap> */
-/* <FormContainer>
-            <p style={{ fontWeight: 900, fontSize: 18 }}>
-              Informations complémentaires
-            </p> */
-
-/* <fieldset id='groupe1' style={{ border: 0 }}>
-              acceptez vous les animaux ?
-              <label>
-                <input
-                  type="checkbox"
-                  id="pet"
-                  name="pet"
-                  checked={pet}
-                  onChange={(event) => {
-                    setpet(Boolean(event.target.checked));
-                  }}
-                />
-              </label>
-            </fieldset>
-
-            {/*  <fieldset id="groupe3" style={{ border: 0, display: 'flex' }}>
-                niveau discussion :
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <label>
-                    <input
-                      type="radio"
-                      required
-                      id="lastName"
-                      name="groupe3"
-                      value={''}
-                      onChange={(event) => {
-                        /*setLastName(event.target.value);
-                      }}
-                    />
-                    je suis bavard
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      required
-                      id="lastName"
-                      name="groupe3"
-                      value={''}
-                      onChange={(event) => {
-                        /*setLastName(event.target.value);
-                      }}
-                    />
-                    je parle quand je suis à l’aise
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      required
-                      id="lastName"
-                      name="groupe3"
-                      value={''}
-                      onChange={(event) => {
-                        /*setLastName(event.target.value);
-                      }}
-                    />
-                    je ne souhaite pas discuter
-                  </label>
-                </div>
-                    </fieldset> */
-
-/*  <fieldset
-              style={{ border: 0, display: "flex", alignItems: "center" }}
-            >
-              prix de votre trajet :
-              <label>
-                <input
+              </RideSeat>
+              <RidePrice>
+                prix de votre trajet{" "}
+                <PriceInput
                   type="Float"
                   required
                   id="ridePrice"
@@ -514,32 +249,65 @@ export default TrajectSummary;
                     setridePrice(Number(event.target.value));
                   }}
                 />
-                {/* <Counter/> */
-/* </label>
-            </fieldset> */
-/* </FormContainer>
-        </MainContainer> */
-// <ButtonContainer>
-//   <button
-//     style={{
-//       paddingTop: 12,
-//       paddingBottom: 12,
-//       paddingLeft: 50,
-//       paddingRight: 50,
-//       backgroundColor: 'white',
-//       color: ' #535353',
-//       borderRadius: 30,
-//       border: 'none',
-//       fontSize: 20,
-//     }}
-//     disabled={loading}
-//   >
-//     {loading ? <Loader /> : 'go !'}
-//   </button>
-// </ButtonContainer>
-/* </form>
-    </Main> */
-/* );
-// }; */
+              </RidePrice>
+            </MainInfo>
+            <SuppInfo>
+              <InfoTitle>informations complémentaires</InfoTitle>
+              <Animal>
+                acceptez-vous les animaux ?{" "}
+                <input
+                  type="checkbox"
+                  id="pet"
+                  name="pet"
+                  checked={pet}
+                  onChange={(event) => {
+                    setpet(Boolean(event.target.checked));
+                  }}
+                />
+              </Animal>
 
-/* export default TrajectSummary; */
+              {/* <AnimalInputYes type="radio" /> oui{" "}
+              <AnimalInputNo type="radio" /> non </Animal>  */}
+
+              <Smoker>
+                accaptez-vous les fumeurs ?
+                <input
+                  type="checkbox"
+                  id="smoker"
+                  name="smoker"
+                  checked={smoker}
+                  onChange={(event) => {
+                    setsmoker(Boolean(event.target.checked));
+                  }}
+                />
+              </Smoker>
+              {/* <SmokerInputYes type="radio" /> oui{" "}
+              <SmokerInputNo type="radio" /> non */}
+            </SuppInfo>
+          </Block>
+        </FormBlock>
+
+        <ButtonContainer>
+          <button
+            style={{
+              paddingTop: 12,
+              paddingBottom: 12,
+              paddingLeft: 50,
+              paddingRight: 50,
+              backgroundColor: "white",
+              color: " #535353",
+              borderRadius: 30,
+              border: "none",
+              fontSize: 20,
+            }}
+            disabled={loading}
+          >
+            {loading ? <Loader /> : "go !"}
+          </button>
+        </ButtonContainer>
+      </form>
+    </Main>
+  );
+};
+
+export default TrajectSummary;
