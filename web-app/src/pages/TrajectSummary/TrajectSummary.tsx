@@ -10,7 +10,29 @@ import {
   NumberPlaceSetted,
   FormContainer,
   ButtonContainer,
-  MainContainer,
+  Block,
+  MainInfo,
+  SuppInfo,
+  RideStart,
+  RideEnd,
+  RideDate,
+  RideSeat,
+  DateInput,
+  StartInput,
+  EndInpute,
+  SeatInput,
+  RidePrice,
+  PriceInput,
+  InfoTitle,
+  Animal,
+  AnimalInputYes,
+  AnimalInputNo,
+  Smoker,
+  SmokerInputYes,
+  SmokerInputNo,
+  FormBlock,
+  GoButton,
+  HeaderContainer,
 } from "./TrajectSummary.styled";
 import { gql, useMutation } from "@apollo/client";
 import React from "react";
@@ -24,6 +46,7 @@ import {
 } from "../../gql/graphql";
 
 import { getErrorMessage } from "../../utils";
+import SwitchButton from "../../components/SwitchButton/SwithButton";
 
 const CREATE_RIDE = gql`
   mutation CreateRide(
@@ -126,7 +149,7 @@ const TrajectSummary = () => {
 
   return (
     <Main>
-      <form
+      {/* <form
         onSubmit={async (event) => {
           event.preventDefault();
           await submit();
@@ -250,11 +273,173 @@ const TrajectSummary = () => {
             </RecapContainer>
           </Recap>
           <FormContainer>
+      > */}
+      <HeaderContainer />
+      <SwitchButton />
+      <BigTitle>Finalisez la création de votre trajet !</BigTitle>
+      <Recap>Récapitulatif</Recap>
+      <FormBlock>
+        <Block>
+          <MainInfo>
+            <RideStart>
+              départ <StartInput />
+            </RideStart>
+            <RideEnd>
+              arrivée <EndInpute />
+            </RideEnd>
+            <RideDate>
+              date <DateInput />
+            </RideDate>
+            <RideSeat>
+              nombre de place disponible <SeatInput />
+            </RideSeat>
+            <RidePrice>
+              prix de votre trajet <PriceInput />
+            </RidePrice>
+          </MainInfo>
+          <SuppInfo>
+            <InfoTitle>informations complémentaires</InfoTitle>
+            <Animal>
+              acceptez-vous les animaux ? <AnimalInputYes type="radio" /> oui{" "}
+              <AnimalInputNo type="radio" /> non
+            </Animal>
+            <Smoker>
+              accaptez-vous les fumeurs ? <SmokerInputYes type="radio" /> oui{" "}
+              <SmokerInputNo type="radio" /> non
+            </Smoker>
+          </SuppInfo>
+        </Block>
+        <ButtonContainer>
+          <GoButton>Go !</GoButton>
+        </ButtonContainer>
+      </FormBlock>
+    </Main>
+  );
+};
+
+export default TrajectSummary;
+/* <MainContainer> */
+/* <Recap> */
+/* <RecapContainer>
+            <Title>Récapitulatif</Title>
+            <Title>
+              {' '}
+              <label>
+                Prénom
+                <br />
+                <input
+                  type='text'
+                  required
+                  id='driverName'
+                  name='driverName'
+                  value={driverName}
+                  onChange={(event) => {
+                    setdriverName(event.target.value);
+                  }}
+                />
+              </label>
+            </Title>
+            <Departure>
+              {' '}
+              <label>
+                Ville de départ
+                <br />
+                <input
+                  type='text'
+                  required
+                  id='departureCity'
+                  name='departureCity'
+                  value={departureCity}
+                  onChange={(event) => {
+                    setdepartureCity(event.target.value);
+                  }}
+                />
+              </label>
+              <label>
+                Adresse de départ
+                <br />
+                <input
+                  type='text'
+                  required
+                  id='departureAdress'
+                  name='departureAdress'
+                  value={departureAdress}
+                  onChange={(event) => {
+                    setdepartureAdress(event.target.value);
+                  }}
+                />
+              </label>
+            </Departure>
+            <Arrival>
+              <label>
+                Destination
+                <br />
+                <input
+                  type='text'
+                  required
+                  id='arrivalCity'
+                  name='arrivalCity'
+                  value={arrivalCity}
+                  onChange={(event) => {
+                    setarrivalCity(event.target.value);
+                  }}
+                />
+              </label>{' '}
+            </Arrival>
+            <DriveDate>
+              {' '}
+              <label>
+                Date
+                <br />
+                <input
+                  type='datetime'
+                  required
+                  id='rideDate'
+                  name='rideDate'
+                  value={rideDate}
+                  onChange={(event) => {
+                    setrideDate(event.target.value);
+                  }}
+                />
+              </label>
+            </DriveDate>
+            <NumberPlaceSetted>
+              <label>
+                Nombre de passager
+                <br />
+                <input
+                  type='Float'
+                  required
+                  id='maxPassagerNumber'
+                  name='maxPassagerNumber'
+                  value={maxPassagerNumber}
+                  onChange={(event) => {
+                    setmaxPassagerNumber(Number(event.target.value));
+                  }}
+                />
+              </label>
+              <label>
+                Fumeur
+                <br />
+                <input
+                  type='checkbox'
+                  id='smoker'
+                  name='smoker'
+                  checked={smoker}
+                  onChange={(event) => {
+                    setsmoker(Boolean(event.target.checked));
+                  }}
+                />
+              </label>
+            </NumberPlaceSetted>
+          </RecapContainer>
+          </Recap> */
+/* <FormContainer>
             <p style={{ fontWeight: 900, fontSize: 18 }}>
               Informations complémentaires
-            </p>
+            </p> */
 
-            <fieldset id="groupe1" style={{ border: 0 }}>
+/* <fieldset id='groupe1' style={{ border: 0 }}>
               acceptez vous les animaux ?
               <label>
                 <input
@@ -312,9 +497,9 @@ const TrajectSummary = () => {
                     je ne souhaite pas discuter
                   </label>
                 </div>
-                    </fieldset> */}
+                    </fieldset> */
 
-            <fieldset
+/*  <fieldset
               style={{ border: 0, display: "flex", alignItems: "center" }}
             >
               prix de votre trajet :
@@ -329,32 +514,32 @@ const TrajectSummary = () => {
                     setridePrice(Number(event.target.value));
                   }}
                 />
-                {/* <Counter/> */}
-              </label>
-            </fieldset>
-          </FormContainer>
-        </MainContainer>
-        <ButtonContainer>
-          <button
-            style={{
-              paddingTop: 12,
-              paddingBottom: 12,
-              paddingLeft: 50,
-              paddingRight: 50,
-              backgroundColor: "white",
-              color: " #535353",
-              borderRadius: 30,
-              border: "none",
-              fontSize: 20,
-            }}
-            disabled={loading}
-          >
-            {loading ? <Loader /> : "go !"}
-          </button>
-        </ButtonContainer>
-      </form>
-    </Main>
-  );
-};
+                {/* <Counter/> */
+/* </label>
+            </fieldset> */
+/* </FormContainer>
+        </MainContainer> */
+// <ButtonContainer>
+//   <button
+//     style={{
+//       paddingTop: 12,
+//       paddingBottom: 12,
+//       paddingLeft: 50,
+//       paddingRight: 50,
+//       backgroundColor: 'white',
+//       color: ' #535353',
+//       borderRadius: 30,
+//       border: 'none',
+//       fontSize: 20,
+//     }}
+//     disabled={loading}
+//   >
+//     {loading ? <Loader /> : 'go !'}
+//   </button>
+// </ButtonContainer>
+/* </form>
+    </Main> */
+/* );
+// }; */
 
-export default TrajectSummary;
+/* export default TrajectSummary; */
