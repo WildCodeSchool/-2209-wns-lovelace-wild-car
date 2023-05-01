@@ -41,6 +41,7 @@ import passengers from "../../img/passengers.png";
 import time from "../../img/time.png";
 import calendar from "../../img/calendar.png";
 import driver from "../../img/driver.png";
+import { RIDE_DETAIL_PATH } from "../../pages/paths";
 
 const DELETE_RIDES = gql`
   mutation DeleteRide($id: String!) {
@@ -85,6 +86,7 @@ const Ride = ({
       toast.error(getErrorMessage(error));
     }
   };
+
   const maDate = new Date(rideDate);
   const Heure = new Date(rideDate);
 
@@ -118,7 +120,7 @@ const Ride = ({
       <RightSide>
         <Time>
           <TimeImage src={time} alt="time" />
-          {Heure.toLocaleString()}
+          {Heure.toLocaleTimeString().slice(0, 5)}
         </Time>
         <Calendar>
           <CalendarImage src={calendar} alt="calendar" />
@@ -130,7 +132,7 @@ const Ride = ({
         </DriverPP>
       </RightSide>
 
-      <Button>détails du trajet</Button>
+      <Button>Détails du trajet</Button>
 
       <CloseButton onClick={onCloseButtonClick} />
       {showDeleteConfirmation && (

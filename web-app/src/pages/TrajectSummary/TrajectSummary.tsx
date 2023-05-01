@@ -121,7 +121,7 @@ const TrajectSummary = () => {
           pet,
         },
       });
-      const maDate = new Date(rideDate);
+
       toast.success(`Bonjour ${driverName} 
       votre trajet a été crée avec succès.`);
       setdriverName("");
