@@ -17,7 +17,6 @@ import {
   ResearchBloc,
   TravelCard,
 } from "./Home.styled";
-import { RideDate } from "../RideDetail/RideDetail.styled";
 
 const GET_RIDES = gql`
   query GetRides {
