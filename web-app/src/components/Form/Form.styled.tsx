@@ -115,24 +115,24 @@ export const RideNB = styled.h1`
   }
 `;
 
-export const GoButton = styled.div`
-  color: white;
-  text-align: center;
-  background-color: #ffa553;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  width: 300px;
-  height: 50px;
-  border: none;
-  @media (min-width: 768px) {
-    height: 50px;
-    width: 145px;
-    border-radius: 25px;
-    margin-top: 20px;
-    background-color: white;
-    color: black;
-  }
-`;
+// export const GoButton = styled.div`
+//   color: white;
+//   text-align: center;
+//   background-color: #ffa553;
+//   border-bottom-left-radius: 20px;
+//   border-bottom-right-radius: 20px;
+//   width: 300px;
+//   height: 50px;
+//   border: none;
+//   @media (min-width: 768px) {
+//     height: 50px;
+//     width: 145px;
+//     border-radius: 25px;
+//     margin-top: 20px;
+//     background-color: white;
+//     color: black;
+//   }
+// `;
 
 // export const SForm = styled.div`
 //   .form {

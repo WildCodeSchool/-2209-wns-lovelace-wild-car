@@ -9,7 +9,7 @@ import {
   RideNB,
   Start,
   End,
-  GoButton,
+  // GoButton,
 } from './Form.styled';
 
 const Form = () => {
@@ -38,7 +38,7 @@ const Form = () => {
           <RideNB>NB</RideNB>
         </FormInfo>
       </FormBlock>
-      <GoButton>go !</GoButton>
+      {/* <GoButton>go !</GoButton> */}
     </>
     // <SForm>
     //   <div

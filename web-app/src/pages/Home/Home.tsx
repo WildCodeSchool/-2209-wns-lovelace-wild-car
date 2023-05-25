@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Loader from "../../components/Loader";
-import { SectionTitle } from "../../styles/base-styles";
-import { TRAJECT_SUMMARY } from "../paths";
-import { useQuery, gql } from "@apollo/client";
-import { GetRidesQuery } from "../../gql/graphql";
-import Form from "../../components/Form/Form";
-import SwitchButton from "../../components/SwitchButton/SwithButton";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
+import { SectionTitle } from '../../styles/base-styles';
+import { TRAJECT_SUMMARY } from '../paths';
+import { useQuery, gql } from '@apollo/client';
+import { GetRidesQuery } from '../../gql/graphql';
+import Form from '../../components/Form/Form';
+import SwitchButton from '../../components/SwitchButton/SwithButton';
 
-import Ride from "../../components/Ride/Ride";
+import Ride from '../../components/Ride/Ride';
 import {
   Main,
   ResearchSection,
@@ -16,7 +16,8 @@ import {
   SwitchSection,
   ResearchBloc,
   TravelCard,
-} from "./Home.styled";
+} from './Home.styled';
+import GoButton from '../../components/GoButton/GoButton';
 
 const GET_RIDES = gql`
   query GetRides {
@@ -38,7 +39,7 @@ const GET_RIDES = gql`
 
 const Home = () => {
   const { data, loading, error, refetch } = useQuery<GetRidesQuery>(GET_RIDES, {
-    fetchPolicy: "cache-and-network",
+    fetchPolicy: 'cache-and-network',
   });
 
   const renderMainContent = () => {
@@ -49,7 +50,7 @@ const Home = () => {
       return error.message;
     }
     if (!data?.rides?.length) {
-      return "Aucun trajet à afficher.";
+      return 'Aucun trajet à afficher.';
     }
 
     return (
@@ -80,6 +81,7 @@ const Home = () => {
       <ResearchSection>
         <SwitchButton />
         <Form />
+        <GoButton />
         {renderMainContent()}
       </ResearchSection>
     </>
