@@ -5,7 +5,7 @@ export const Main = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #48c8d4;
+  background-color: #109eab;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,11 @@ export const Main = styled.section`
   height: 100vh;
   background: linear-gradient(156.54deg, #1cb8c7 8.29%, #0fbdcd 94.05%);
   color: white; */
+
+  @media (max-width: 768px) {
+    height: 120vh;
+    padding-top: 30px;
+  }
 `;
 
 // export const MainContainer = styled.section`
@@ -35,9 +40,7 @@ export const HeaderContainer = styled.section`
 
 export const BigTitle = styled.h1`
   color: white;
-  @media (min-width: 768px) {
-    text-align: center;
-  }
+  text-align: center;
 `;
 
 export const Recap = styled.h2`
@@ -61,9 +64,11 @@ export const Block = styled.section`
 export const FormBlock = styled.form``;
 
 export const MainInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   @media (min-width: 768px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 `;
 
@@ -222,6 +227,13 @@ export const GoButton = styled.button`
 export const RecapContainer = styled.section`
   padding: 0px 30px;
   margin-top: 40px;
+  background-color: #48c8d4;
+  color: white;
+
+  @media (max-width: 768px) {
+    padding: 50px;
+    margin-bottom: 30px;
+  }
 `;
 
 export const Title = styled.section`
@@ -257,7 +269,44 @@ export const FormContainer = styled.section`
   font-size: 14px;
 `;
 
-// export const ButtonContainer = styled.section`
+export const InputContainer = styled.section`
+  color: white;
+
+  input {
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    margin 10px 0px;
+    padding-left:20px;
+  }
+
+  label {
+    color: white;
+    font-weight:700;
+  }
+
+   @media (max-width: 768px) {
+     display:flex;
+     justify-content:flex-start;
+     width: "100%";
+     padding-left:25%;
+    label {
+      color: white;
+      font-weight:700;
+    }
+   }
+`;
+
+export const MainInfoLeftSide = styled.div`
+  margin-right: 30px;
+
+  @media (max-width: 768px) {
+    margin-right: 0px;
+  }
+`;
+
+export const MainInfoRightSide = styled.div``;
+// export const ButtonContainer = styled.section`;
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;

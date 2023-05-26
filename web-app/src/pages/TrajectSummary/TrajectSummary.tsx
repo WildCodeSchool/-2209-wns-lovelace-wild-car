@@ -3,6 +3,9 @@ import {
   Recap,
   BigTitle,
   RecapContainer,
+  InputContainer,
+  MainInfoLeftSide,
+  MainInfoRightSide,
   Title,
   Departure,
   Arrival,
@@ -33,20 +36,20 @@ import {
   FormBlock,
   GoButton,
   HeaderContainer,
-} from "./TrajectSummary.styled";
-import { gql, useMutation } from "@apollo/client";
-import React from "react";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Loader from "../../components/Loader";
+} from './TrajectSummary.styled';
+import { gql, useMutation } from '@apollo/client';
+import React from 'react';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../components/Loader';
 import {
   CreateRideMutation,
   CreateRideMutationVariables,
-} from "../../gql/graphql";
+} from '../../gql/graphql';
 
-import { getErrorMessage } from "../../utils";
-import SwitchButton from "../../components/SwitchButton/SwithButton";
+import { getErrorMessage } from '../../utils';
+import SwitchButton from '../../components/SwitchButton/SwithButton';
 
 const CREATE_RIDE = gql`
   mutation CreateRide(
@@ -89,11 +92,11 @@ const CREATE_RIDE = gql`
 `;
 
 const TrajectSummary = () => {
-  const [driverName, setdriverName] = useState("");
-  const [departureCity, setdepartureCity] = useState("");
-  const [departureAdress, setdepartureAdress] = useState("");
-  const [rideDate, setrideDate] = useState("");
-  const [arrivalCity, setarrivalCity] = useState("");
+  const [driverName, setdriverName] = useState('');
+  const [departureCity, setdepartureCity] = useState('');
+  const [departureAdress, setdepartureAdress] = useState('');
+  const [rideDate, setrideDate] = useState('');
+  const [arrivalCity, setarrivalCity] = useState('');
   const [maxPassagerNumber, setmaxPassagerNumber] = useState<number>(0);
   const [maxPassagerLeft, setmaxPassagerLeft] = useState<number>(0);
   const [ridePrice, setridePrice] = useState<number>(0);
@@ -124,11 +127,11 @@ const TrajectSummary = () => {
 
       toast.success(`Bonjour ${driverName} 
       votre trajet a été crée avec succès.`);
-      setdriverName("");
-      setdepartureCity("");
-      setdepartureAdress("");
-      setrideDate("");
-      setarrivalCity("");
+      setdriverName('');
+      setdepartureCity('');
+      setdepartureAdress('');
+      setrideDate('');
+      setarrivalCity('');
       setmaxPassagerNumber(Number);
       setmaxPassagerLeft(Number);
       setridePrice(Number);
@@ -149,13 +152,130 @@ const TrajectSummary = () => {
       >
         <HeaderContainer />
         <SwitchButton />
-        <BigTitle>Finalisez la création de votre trajet !</BigTitle>
-        <Recap>Récapitulatif</Recap>
+        <BigTitle>Créez votre trajet !</BigTitle>
         <FormBlock>
           <Block>
             <MainInfo>
+              <MainInfoLeftSide>
+                <InputContainer>
+                  <label>
+                    Prénom
+                    <br />
+                    <input
+                      type="text"
+                      required
+                      id="driverName"
+                      name="driverName"
+                      value={driverName}
+                      onChange={(event) => {
+                        setdriverName(event.target.value);
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+                <InputContainer>
+                  <label>
+                    Ville départ
+                    <br />
+                    <input
+                      type="text"
+                      required
+                      id="departureCity"
+                      name="departureCity"
+                      value={departureCity}
+                      onChange={(event) => {
+                        setdepartureCity(event.target.value);
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+                <InputContainer>
+                  <label>
+                    Adresse de départ
+                    <br />
+                    <input
+                      type="text"
+                      required
+                      id="departureAdress"
+                      name="departureAdress"
+                      value={departureAdress}
+                      onChange={(event) => {
+                        setdepartureAdress(event.target.value);
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+                <InputContainer>
+                  <label>
+                    Destination
+                    <br />
+                    <input
+                      type="text"
+                      required
+                      id="arrivalCity"
+                      name="arrivalCity"
+                      value={arrivalCity}
+                      onChange={(event) => {
+                        setarrivalCity(event.target.value);
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+              </MainInfoLeftSide>
+              <MainInfoRightSide>
+                <InputContainer>
+                  <label>
+                    Date
+                    <br />
+                    <input
+                      type="datetime-local"
+                      required
+                      id="rideDate"
+                      name="rideDate"
+                      value={rideDate}
+                      onChange={(event) => {
+                        setrideDate(event.target.value);
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+                <InputContainer>
+                  <label>
+                    Nombre de place disponible
+                    <br />
+                    <input
+                      type="Float"
+                      required
+                      id="maxPassagerNumber"
+                      name="maxPassagerNumber"
+                      value={maxPassagerNumber}
+                      onChange={(event) => {
+                        setmaxPassagerNumber(Number(event.target.value));
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+                <InputContainer>
+                  <label>
+                    Prix de votre trajet
+                    <br />
+                    <input
+                      type="Float"
+                      required
+                      id="ridePrice"
+                      name="ridePrice"
+                      value={ridePrice}
+                      onChange={(event) => {
+                        setridePrice(Number(event.target.value));
+                      }}
+                    />
+                  </label>
+                </InputContainer>
+              </MainInfoRightSide>
+            </MainInfo>
+
+            {/* <MainInfo>
               <Title>
-                {" "}
                 <label>
                   Prénom
                   <br />
@@ -172,7 +292,7 @@ const TrajectSummary = () => {
                 </label>
               </Title>
               <RideStart>
-                Ville départ{" "}
+                Ville départ{' '}
                 <StartInput
                   type="text"
                   required
@@ -199,7 +319,7 @@ const TrajectSummary = () => {
                 />
               </label>
               <RideEnd>
-                Déstination{" "}
+                Destination{' '}
                 <EndInpute
                   type="text"
                   required
@@ -212,7 +332,7 @@ const TrajectSummary = () => {
                 />
               </RideEnd>
               <RideDate>
-                date{" "}
+                date{' '}
                 <DateInput
                   type="datetime-local"
                   required
@@ -225,7 +345,7 @@ const TrajectSummary = () => {
                 />
               </RideDate>
               <RideSeat>
-                nombre de place disponible{" "}
+                nombre de place disponible{' '}
                 <SeatInput
                   type="Float"
                   required
@@ -238,7 +358,7 @@ const TrajectSummary = () => {
                 />
               </RideSeat>
               <RidePrice>
-                prix de votre trajet{" "}
+                prix de votre trajet{' '}
                 <PriceInput
                   type="Float"
                   required
@@ -250,40 +370,42 @@ const TrajectSummary = () => {
                   }}
                 />
               </RidePrice>
-            </MainInfo>
-            <SuppInfo>
-              <InfoTitle>informations complémentaires</InfoTitle>
-              <Animal>
-                acceptez-vous les animaux ?{" "}
-                <input
-                  type="checkbox"
-                  id="pet"
-                  name="pet"
-                  checked={pet}
-                  onChange={(event) => {
-                    setpet(Boolean(event.target.checked));
-                  }}
-                />
-              </Animal>
+            </MainInfo> */}
+            <RecapContainer>
+              <SuppInfo>
+                <InfoTitle>informations complémentaires</InfoTitle>
+                <Animal>
+                  acceptez-vous les animaux ?
+                  <input
+                    type="checkbox"
+                    id="pet"
+                    name="pet"
+                    checked={pet}
+                    onChange={(event) => {
+                      setpet(Boolean(event.target.checked));
+                    }}
+                  />
+                </Animal>
 
-              {/* <AnimalInputYes type="radio" /> oui{" "}
+                {/* <AnimalInputYes type="radio" /> oui{" "}
               <AnimalInputNo type="radio" /> non </Animal>  */}
 
-              <Smoker>
-                accaptez-vous les fumeurs ?
-                <input
-                  type="checkbox"
-                  id="smoker"
-                  name="smoker"
-                  checked={smoker}
-                  onChange={(event) => {
-                    setsmoker(Boolean(event.target.checked));
-                  }}
-                />
-              </Smoker>
-              {/* <SmokerInputYes type="radio" /> oui{" "}
+                <Smoker>
+                  acceptez-vous les fumeurs ?
+                  <input
+                    type="checkbox"
+                    id="smoker"
+                    name="smoker"
+                    checked={smoker}
+                    onChange={(event) => {
+                      setsmoker(Boolean(event.target.checked));
+                    }}
+                  />
+                </Smoker>
+                {/* <SmokerInputYes type="radio" /> oui{" "}
               <SmokerInputNo type="radio" /> non */}
-            </SuppInfo>
+              </SuppInfo>
+            </RecapContainer>
           </Block>
         </FormBlock>
 
@@ -294,15 +416,15 @@ const TrajectSummary = () => {
               paddingBottom: 12,
               paddingLeft: 50,
               paddingRight: 50,
-              backgroundColor: "white",
-              color: " #535353",
+              backgroundColor: 'white',
+              color: ' #535353',
               borderRadius: 30,
-              border: "none",
+              border: 'none',
               fontSize: 20,
             }}
             disabled={loading}
           >
-            {loading ? <Loader /> : "go !"}
+            {loading ? <Loader /> : 'go !'}
           </button>
         </ButtonContainer>
       </form>
