@@ -3,7 +3,12 @@ import { TRAJECT_SUMMARY } from '../../../pages/paths';
 import { Button } from './ProposeButton.styled';
 
 const ProposeButton = () => {
-  return <Button> <Link to={TRAJECT_SUMMARY}>Je Propose </Link> </Button>;
+  return (
+    <Button data-cy="putTrajectButton">
+      {' '}
+      <Link to={TRAJECT_SUMMARY}>Je Propose </Link>{' '}
+    </Button>
+  );
 };
 
 export default ProposeButton;

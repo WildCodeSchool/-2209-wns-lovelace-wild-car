@@ -166,6 +166,7 @@ const TrajectSummary = () => {
                       required
                       id="driverName"
                       name="driverName"
+                      data-cy="driverName"
                       value={driverName}
                       onChange={(event) => {
                         setdriverName(event.target.value);
@@ -182,6 +183,7 @@ const TrajectSummary = () => {
                       required
                       id="departureCity"
                       name="departureCity"
+                      data-cy="departureCity"
                       value={departureCity}
                       onChange={(event) => {
                         setdepartureCity(event.target.value);
@@ -198,6 +200,7 @@ const TrajectSummary = () => {
                       required
                       id="departureAdress"
                       name="departureAdress"
+                      data-cy="departureAdress"
                       value={departureAdress}
                       onChange={(event) => {
                         setdepartureAdress(event.target.value);
@@ -214,6 +217,7 @@ const TrajectSummary = () => {
                       required
                       id="arrivalCity"
                       name="arrivalCity"
+                      data-cy="arrivalCity"
                       value={arrivalCity}
                       onChange={(event) => {
                         setarrivalCity(event.target.value);
@@ -232,6 +236,7 @@ const TrajectSummary = () => {
                       required
                       id="rideDate"
                       name="rideDate"
+                      data-cy="rideDate"
                       value={rideDate}
                       onChange={(event) => {
                         setrideDate(event.target.value);
@@ -248,6 +253,7 @@ const TrajectSummary = () => {
                       required
                       id="maxPassagerNumber"
                       name="maxPassagerNumber"
+                      data-cy="maxPassagerNumber"
                       value={maxPassagerNumber}
                       onChange={(event) => {
                         setmaxPassagerNumber(Number(event.target.value));
@@ -264,6 +270,7 @@ const TrajectSummary = () => {
                       required
                       id="ridePrice"
                       name="ridePrice"
+                      data-cy="ridePrice"
                       value={ridePrice}
                       onChange={(event) => {
                         setridePrice(Number(event.target.value));
@@ -380,6 +387,7 @@ const TrajectSummary = () => {
                     type="checkbox"
                     id="pet"
                     name="pet"
+                    data-cy="pet"
                     checked={pet}
                     onChange={(event) => {
                       setpet(Boolean(event.target.checked));
@@ -396,6 +404,7 @@ const TrajectSummary = () => {
                     type="checkbox"
                     id="smoker"
                     name="smoker"
+                    data-cy="smoker"
                     checked={smoker}
                     onChange={(event) => {
                       setsmoker(Boolean(event.target.checked));
@@ -423,6 +432,7 @@ const TrajectSummary = () => {
               fontSize: 20,
             }}
             disabled={loading}
+            data-cy="goButton"
           >
             {loading ? <Loader /> : 'go !'}
           </button>
