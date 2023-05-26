@@ -13,26 +13,42 @@ export const FormRide = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  /* border-top-left-radius: 20px;
+  border-top-right-radius: 20px; */
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
   }
 `;
 
-export const Start = styled.h1`
-  height: 30px;
-  width: 280px;
-  margin-bottom: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
+// export const Start = styled.h1`
+//   height: 30px;
+//   width: 280px;
+//   margin-bottom: 0px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   @media (min-width: 768px) {
+//     height: 80px;
+//     width: 80px;
+//     border-bottom-left-radius: 20px;
+//   }
+// `;
+
+export const StartBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (min-width: 768px) {
     height: 80px;
-    width: 80px;
-    border-bottom-left-radius: 20px;
+    width: 100px;
   }
+`;
+
+export const StartingPointImage = styled.img`
+  width: 30px;
+  height: 30px;
 `;
 
 export const RideStart = styled.input`
@@ -43,6 +59,8 @@ export const RideStart = styled.input`
   border-right: none;
   padding-left: 10px;
   padding-right: 10px;
+  /* border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px; */
   @media (min-width: 768px) {
     height: 80px;
     width: 150px;
@@ -62,6 +80,16 @@ export const End = styled.h1`
   }
 `;
 
+export const EndBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    height: 80px;
+    width: 100px;
+  }
+`;
+
 export const RideEnd = styled.input`
   height: 30px;
   width: 280px;
@@ -73,7 +101,7 @@ export const RideEnd = styled.input`
   @media (min-width: 768px) {
     height: 80px;
     width: 150px;
-    border-bottom: none;
+    border: none;
   }
 `;
 
@@ -84,24 +112,87 @@ export const FormInfo = styled.div`
   @media (min-width: 768px) {
     height: 50px;
     border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 `;
 
-export const RideDate = styled.h1`
-  height: 60px;
-  width: 140px;
-  background-color: white;
-  margin: 0px;
+export const DateBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    height: 80px;
+    width: 100px;
+  }
+`;
+
+export const DateImage = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+export const RideDate = styled.input`
+  height: 30px;
+  width: 280px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   padding-left: 10px;
   padding-right: 10px;
   @media (min-width: 768px) {
-    height: 30px;
-    width: 280px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    height: 80px;
+    width: 75px;
+    border: none;
   }
 `;
+
+export const PassengerBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    height: 80px;
+    width: 100px;
+  }
+`;
+
+export const PassengerImage = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+export const RidePassenger = styled.input`
+  height: 30px;
+  width: 280px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  @media (min-width: 768px) {
+    height: 80px;
+    width: 75px;
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+`;
+
+// export const RideDate = styled.h1`
+//   height: 60px;
+//   width: 140px;
+//   background-color: white;
+//   margin: 0px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   @media (min-width: 768px) {
+//     height: 30px;
+//     width: 280px;
+//     border-top: none;
+//     border-left: none;
+//     border-right: none;
+//   }
+// `;
 
 export const RideNB = styled.h1`
   height: 60px;
@@ -115,24 +206,24 @@ export const RideNB = styled.h1`
   }
 `;
 
-export const GoButton = styled.div`
-  color: white;
-  text-align: center;
-  background-color: #ffa553;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  width: 300px;
-  height: 50px;
-  border: none;
-  @media (min-width: 768px) {
-    height: 50px;
-    width: 145px;
-    border-radius: 25px;
-    margin-top: 20px;
-    background-color: white;
-    color: black;
-  }
-`;
+// export const GoButton = styled.div`
+//   color: white;
+//   text-align: center;
+//   background-color: #ffa553;
+//   border-bottom-left-radius: 20px;
+//   border-bottom-right-radius: 20px;
+//   width: 300px;
+//   height: 50px;
+//   border: none;
+//   @media (min-width: 768px) {
+//     height: 50px;
+//     width: 145px;
+//     border-radius: 25px;
+//     margin-top: 20px;
+//     background-color: white;
+//     color: black;
+//   }
+// `;
 
 // export const SForm = styled.div`
 //   .form {
