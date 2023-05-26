@@ -42,6 +42,7 @@ import time from "../../img/time.png";
 import calendar from "../../img/calendar.png";
 import driver from "../../img/driver.png";
 import { RIDE_DETAIL_PATH } from "../../pages/paths";
+import { Link } from "react-router-dom";
 
 const DELETE_RIDES = gql`
   mutation DeleteRide($id: String!) {
@@ -132,7 +133,7 @@ const Ride = ({
         </DriverPP>
       </RightSide>
 
-      <Button>Détails du trajet</Button>
+      <Link to={RIDE_DETAIL_PATH}>detail trajet</Link>
 
       <CloseButton onClick={onCloseButtonClick} />
       {showDeleteConfirmation && (
