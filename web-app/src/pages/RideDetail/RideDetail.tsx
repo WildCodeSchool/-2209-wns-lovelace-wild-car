@@ -58,7 +58,6 @@ const GET_RIDES_BY_ID = gql`
 type PropType = GetRidesQuery["rides"][number];
 
 const RideDetail = ({
-  id,
   driverName,
   departureCity,
   departureAdress,
