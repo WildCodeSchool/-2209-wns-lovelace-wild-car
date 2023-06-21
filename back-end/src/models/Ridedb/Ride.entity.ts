@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from 'type-graphql';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,18 +6,7 @@ import {
   ManyToOne,
   ManyToMany,
   JoinTable,
-} from "typeorm";
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-dayjs.extend(utc)
-
-
-
-
-
-
-
-
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -29,11 +18,10 @@ export default class Ride {
     rideDate: Date,
     arrivalCity: string,
     maxPassagerNumber: number,
-    maxPassagerLeft:number,
-    ridePrice:number,
+    maxPassagerLeft: number,
+    ridePrice: number,
     smoker: boolean,
-    pet: boolean,
-    
+    pet: boolean
   ) {
     this.driverName = driverName;
     this.departureCity = departureCity;
@@ -45,9 +33,9 @@ export default class Ride {
     this.ridePrice = ridePrice;
     this.smoker = smoker;
     this.pet = pet;
-    }
-  
-  @PrimaryGeneratedColumn("uuid")
+  }
+
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
@@ -55,67 +43,39 @@ export default class Ride {
   @Field(() => String)
   driverName: string;
 
- 
-
   @Column()
   @Field(() => String)
   departureCity: string;
-
- 
 
   @Column()
   @Field(() => String)
   departureAdress: string;
 
- 
-
   @Column()
   @Field()
   rideDate: Date;
-
-  @Field(()=> String)
-  localizedDate(){
-    return dayjs(this.rideDate).format('DD/MM/YYYY h:m');
-  }
-
-  
 
   @Column()
   @Field(() => String)
   arrivalCity: string;
 
- 
-
   @Column()
   @Field(() => Number)
   maxPassagerNumber: number;
-
-
 
   @Column()
   @Field(() => Number)
   maxPassagerLeft: number;
 
-  
-
   @Column()
   @Field(() => Number)
   ridePrice: number;
-
-
 
   @Column()
   @Field(() => Boolean)
   smoker: boolean;
 
-
-
   @Column()
   @Field(() => Boolean)
   pet: boolean;
-
-  
-
-
-
 }
