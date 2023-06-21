@@ -7,9 +7,7 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-dayjs.extend(utc)
+
 
 
 
@@ -73,10 +71,6 @@ export default class Ride {
   @Field()
   rideDate: Date;
 
-  @Field(()=> String)
-  localizedDate(){
-    return dayjs(this.rideDate).format('DD/MM/YYYY h:m');
-  }
 
   
 

@@ -1,41 +1,42 @@
-import ChooseRideButton from "../../components/ChooseRideButton/ChooseRideButton";
-import {
-  Start,
-  DetailSection,
-  InfoSection,
-  RideDate,
-  StartTime,
-  StartCity,
-  End,
-  EndTime,
-  EndCity,
-  Price,
-  Driver,
-  DriverName,
-  PriceH1,
-  PriceValue,
-  MoreInfoTitle,
-  MoreInfoText,
-  Logo,
-  DriverImg,
-  EndingPointImg,
-  StartTimeImg,
-  DriverPPImg,
-  DotContainer,
-  Dot,
-  Main,
-} from "./RideDetail.styled";
-import startingPoint from "../../img/starting-point.png";
-import endingPoint from "../../img/ending-point.png";
-import steeringWheel from "../../img/steering-wheel.png";
-import driver from "../../img/driver.png";
-import { GetRidesQuery } from "../../gql/graphql";
-import Ride from "../../components/Ride/Ride";
+//import ChooseRideButton from "../../components/ChooseRideButton/ChooseRideButton";
+//import {
+// Start,
+//DetailSection,
+// InfoSection,
+// RideDate,
+// StartTime,
+// StartCity,
+// End,
+// EndTime,
+// EndCity,
+// Price,
+// Driver,
+// DriverName,
+// PriceH1,
+// PriceValue,
+// MoreInfoTitle,
+// MoreInfoText,
+// Logo,
+// DriverImg,
+// EndingPointImg,
+// StartTimeImg,
+// DriverPPImg,
+// DotContainer,
+// Dot,
+// Main,
+//} from "./RideDetail.styled";
+//import startingPoint from "../../img/starting-point.png";
+//import endingPoint from "../../img/ending-point.png";
+//import steeringWheel from "../../img/steering-wheel.png";
+//import driver from "../../img/driver.png";
+//import { GetRidesQuery } from "../../gql/graphql";
+//import Ride from "../../components/Ride/Ride";
 
-import { gql, useQuery } from "@apollo/client";
+//import { ApolloClient, InMemoryCache } from "@apollo/client";
+//import Loader from "../../components/Loader";
 
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import Loader from "../../components/Loader";
+import { gql } from "graphql-request";
+import { Connection } from "your-database-library";
 
 const GET_RIDES_BY_ID = gql`
   query GetRideById($id: ID!) {
@@ -55,65 +56,22 @@ const GET_RIDES_BY_ID = gql`
   }
 `;
 
-type PropType = GetRidesQuery["rides"][number];
+const id = "GET_RIDES_BY_ID";
 
-const RideDetail = ({
-  driverName,
-  departureCity,
-  departureAdress,
-  rideDate,
-  arrivalCity,
-  maxPassagerNumber,
-  maxPassagerLeft,
-  ridePrice,
-  smoker,
-  pet,
-}: PropType) => {
-  const { data, loading, error } = useQuery<GetRidesQuery>(GET_RIDES_BY_ID, {
-    fetchPolicy: "cache-and-network",
-  });
-
-  const renderMainContent = () => {
-    if (loading) {
-      return <Loader />;
-    }
+const query = Connection.query(
+  GET_RIDES_BY_ID,
+  { id },
+  (error: any, results: any) => {
     if (error) {
-      return error.message;
+      console.error("Erreur lors de l'exécution de la requête :", error);
+    } else {
+      console.log("Résultats de la requête :", results);
     }
-    if (!data?.rides?.length) {
-      return "Aucune info .";
-    }
+  }
+);
 
-    return (
-      <>
-        <Main>
-          <DetailSection>
-            <Logo>Logo</Logo>
-            <RideDate></RideDate>
-            <Start>
-              <StartTime>{driverName}</StartTime>
-              <StartTimeImg src={startingPoint} alt="start position" />
+export default query;
 
-              {departureCity}
-              {departureAdress}
-              {rideDate}
-              {arrivalCity}
-              {maxPassagerNumber}
-              {maxPassagerLeft}
-              {ridePrice}
-              {smoker}
-              {pet}
-
-              <StartCity></StartCity>
-            </Start>
-          </DetailSection>
-        </Main>
-      </>
-    );
-  };
-
-  return <>{renderMainContent()}</>;
-};
 //           </Start>
 //           <DotContainer>
 //             <Dot />
@@ -146,5 +104,3 @@ const RideDetail = ({
 //     </>
 //   );
 // };
-
-export default RideDetail;

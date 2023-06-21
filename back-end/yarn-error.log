@@ -1,0 +1,69 @@
+Arguments: 
+  /Users/sk/.nvm/versions/node/v16.17.0/bin/node /Users/sk/.nvm/versions/node/v16.17.0/bin/yarn add your-database-library
+
+PATH: 
+  /Users/sk/.nvm/versions/node/v16.17.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sk/.nvm/versions/node/v16.17.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/your-database-library: Not found
+      at Request.params.callback [as _callback] (/Users/sk/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/Users/sk/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/Users/sk/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/Users/sk/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "2209-wns-lovelace-wild-car",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "tsc",
+      "start": "node dist/index.js",
+      "start:watch": "tsc && (tsc -w & nodemon --legacy-watch dist/index.js)"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "apollo-server": "^3.10.3",
+      "bcryptjs": "^2.4.3",
+      "class-validator": "^0.13.2",
+      "cookie": "^0.5.0",
+      "dayjs": "^1.11.7",
+      "graphql": "^15.8.0",
+      "pg": "^8.8.0",
+      "reflect-metadata": "^0.1.13",
+      "sqlite3": "^5.0.11",
+      "type-graphql": "^1.1.1",
+      "typeorm": "^0.3.11"
+    },
+    "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
+      "@types/cookie": "^0.5.1",
+      "@types/prop-types": "^15.7.5",
+      "nodemon": "^2.0.19",
+      "typescript": "^4.8.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
