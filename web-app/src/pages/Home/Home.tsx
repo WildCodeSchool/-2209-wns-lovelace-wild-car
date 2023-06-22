@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import { SectionTitle } from '../../styles/base-styles';
 import { TRAJECT_SUMMARY } from '../paths';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, useLazyQuery } from '@apollo/client';
 import { GetRidesQuery } from '../../gql/graphql';
 import Form from '../../components/Form/Form';
 import SwitchButton from '../../components/SwitchButton/SwithButton';
@@ -37,10 +37,85 @@ const GET_RIDES = gql`
   }
 `;
 
+const GET_FILTERED_RIDES = gql`
+  query GetFilteredRides($departure: String!, $arrival: String!) {
+    filteredRides(departure: $departure, arrival: $arrival) {
+      id
+      driverName
+      departureCity
+      departureAddress
+      rideDate
+      arrivalCity
+      maxPassengerNumber
+      maxPassengerLeft
+      ridePrice
+      smoker
+      pet
+    }
+  }
+`;
+
 const Home = () => {
   const { data, loading, error, refetch } = useQuery<GetRidesQuery>(GET_RIDES, {
     fetchPolicy: 'cache-and-network',
   });
+
+  const [
+    fetchFilteredRides,
+    { data: filteredRidesData, loading: filteredRidesLoading },
+  ] = useLazyQuery(GET_FILTERED_RIDES);
+
+  const [formData, setFormData] = useState({
+    départ: '',
+    arrivé: '',
+    date: '',
+    nbPassager: 0,
+  });
+
+  const handleClickSearch = () => {
+    fetchFilteredRides({
+      variables: {
+        departure: formData.départ,
+        arrival: formData.arrivé,
+      },
+    });
+  };
+
+  const renderFilterContent = () => {
+    if (loading || filteredRidesLoading) {
+      return <Loader />;
+    }
+    if (error) {
+      return error.message;
+    }
+    if (!data?.rides?.length && !filteredRidesData?.filteredRides?.length) {
+      return 'Aucun trajet à afficher.';
+    }
+
+    const rides = filteredRidesData?.filteredRides || data.rides;
+
+    return (
+      <>
+        {rides.map((ride) => (
+          <Ride
+            key={ride.id}
+            id={ride.id}
+            driverName={ride.driverName}
+            departureCity={ride.departureCity}
+            departureAddress={ride.departureAddress}
+            rideDate={ride.rideDate}
+            arrivalCity={ride.arrivalCity}
+            maxPassengerNumber={ride.maxPassengerNumber}
+            maxPassengerLeft={ride.maxPassengerLeft}
+            ridePrice={ride.ridePrice}
+            smoker={ride.smoker}
+            pet={ride.pet}
+            onDelete={refetch}
+          />
+        ))}
+      </>
+    );
+  };
 
   const renderMainContent = () => {
     if (loading) {
@@ -80,9 +155,27 @@ const Home = () => {
     <>
       <ResearchSection>
         <SwitchButton />
-        <Form />
-        <GoButton />
+        <Form
+          dataStart={formData.départ}
+          dataEnd={formData.arrivé}
+          dataDate={formData.date}
+          dataPassenger={formData.nbPassager}
+          handleStartChange={(value) =>
+            setFormData({ ...formData, départ: value })
+          }
+          handleEndChange={(value) =>
+            setFormData({ ...formData, arrivé: value })
+          }
+          handleDateChange={(value) =>
+            setFormData({ ...formData, date: value })
+          }
+          handlePassengerChange={(value) =>
+            setFormData({ ...formData, nbPassager: value })
+          }
+        />
+        <GoButton handleClickSearch={''} />
         {renderMainContent()}
+        {renderFilterContent()}
       </ResearchSection>
     </>
   );
