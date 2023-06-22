@@ -23,23 +23,32 @@ import startingPoint from '../../img/starting-point.png';
 import calendarImage from '../../img/calendar.png';
 import passengerImage from '../../img/passengers.png';
 
-const Form = () => {
-  const [formData, setFormData] = useState({
-    départ: '',
-    arrivé: '',
-    date: '',
-    nbPassager: '',
-  });
-
+const Form = ({
+  dataStart,
+  dataEnd,
+  dataDate,
+  dataPassenger,
+  handleStartChange,
+  handleEndChange,
+  handleDateChange,
+  handlePassengerChange,
+}: {
+  dataStart: string;
+  dataEnd: string;
+  dataDate: string;
+  dataPassenger: number;
+  handleStartChange: (value: string) => void;
+  handleEndChange: (value: string) => void;
+  handleDateChange: (value: string) => void;
+  handlePassengerChange: (value: number) => void;
+}) => {
   const submit = () => {
     console.log('submit');
   };
-
   return (
     <>
       <FormBlock>
         <FormRide>
-          {/* <Start>départ</Start> */}
           <StartBlock>
             <StartingPointImage src={startingPoint} alt='start position' />
           </StartBlock>
@@ -47,9 +56,9 @@ const Form = () => {
             type='text'
             name='start'
             placeholder='départ'
-            value={formData.départ}
+            value={dataStart}
+            onChange={(event) => handleStartChange(event.target.value)}
           />
-          {/* <End>arrivée</End> */}
           <EndBlock>
             <StartingPointImage src={startingPoint} alt='start position' />
           </EndBlock>
@@ -57,11 +66,11 @@ const Form = () => {
             type='text'
             name='end'
             placeholder='arrivée'
-            value={formData.arrivé}
+            value={dataEnd}
+            onChange={(event) => handleEndChange(event.target.value)}
           />
         </FormRide>
         <FormInfo>
-          {/* <RideDate>date</RideDate> */}
           <DateBlock>
             <DateImage src={calendarImage} alt='calendar icon' />
           </DateBlock>
@@ -69,52 +78,24 @@ const Form = () => {
             type='text'
             name='end'
             placeholder="aujourd'hui"
-            value={formData.date}
+            value={dataDate}
+            onChange={(event) => handleDateChange(event.target.value)}
           />
-          {/* <RideNB>NB</RideNB> */}
           <PassengerBlock>
             <PassengerImage src={passengerImage} alt='passenger icon' />
           </PassengerBlock>
           <RidePassenger
-            type='text'
+            type='number'
             name='end'
             placeholder='1'
-            value={formData.nbPassager}
+            value={dataPassenger}
+            onChange={(event) =>
+              handlePassengerChange(Number(event.target.value))
+            }
           />
         </FormInfo>
       </FormBlock>
-      {/* <GoButton>go !</GoButton> */}
     </>
-    // <SForm>
-    //   <div
-    //     className='form'
-    //     onSubmit={async (event) => {
-    //       event.preventDefault();
-    //       await submit();
-    //     }}
-    //   >
-    //     <h1>départ</h1>
-    //     <input
-    //       className='inputForm'
-    //       type='text'
-    //       name='départ'
-    //       value={formData.départ}
-    //     />
-    //     <h1>arrivée</h1>
-    //     <input
-    //       className='inputForm'
-    //       type='text'
-    //       name='départ'
-    //       value={formData.arrivé}
-    //     />
-    //     <div className='row'>
-    //       <h1>calendrier</h1>
-    //       <h1>nb place</h1>
-    //     </div>
-    //     <button type='submit'>go !</button>
-    //   </div>
-    // </SForm>
   );
 };
-
 export default Form;
