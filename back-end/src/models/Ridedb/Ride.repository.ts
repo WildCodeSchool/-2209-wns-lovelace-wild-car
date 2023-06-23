@@ -13,6 +13,13 @@ export default class RideRepository extends Ridedb {
     return this.repository.find();
   }
 
+
+  static async  getRidesId(id: string) {
+    return this.repository.findOneBy({ id });
+   }
+
+  
+
   static async createRide(
     driverName: string,
     departureCity: string,

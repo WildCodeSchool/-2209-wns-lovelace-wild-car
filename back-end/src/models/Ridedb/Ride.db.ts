@@ -8,7 +8,7 @@ export default class RideDb {
     this.repository = await getRepository(Ride);
   }
 
-   protected static findRideById(wildcarId: string) {
+  static async  findRideById(wildcarId: string) {
     return this.repository.findOneBy({ id: wildcarId });
    }
 

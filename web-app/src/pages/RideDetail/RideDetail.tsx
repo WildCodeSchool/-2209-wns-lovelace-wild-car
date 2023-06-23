@@ -29,18 +29,21 @@
 //import endingPoint from "../../img/ending-point.png";
 //import steeringWheel from "../../img/steering-wheel.png";
 //import driver from "../../img/driver.png";
-//import { GetRidesQuery } from "../../gql/graphql";
-//import Ride from "../../components/Ride/Ride";
+//import { getRidesId } from "../../gql/graphql";
+import Ride from "../../components/Ride/Ride";
 
 //import { ApolloClient, InMemoryCache } from "@apollo/client";
-//import Loader from "../../components/Loader";
+import Loader from "../../components/Loader";
 
 import { gql } from "graphql-request";
-import { Connection } from "your-database-library";
+import { useQuery } from "@apollo/client";
+import parse from "graphql-tag";
 
-const GET_RIDES_BY_ID = gql`
-  query GetRideById($id: ID!) {
-    findOneById(id: $id) {
+//import ChooseRideButton from "../../components/ChooseRideButton/ChooseRideButton";
+
+const GET_RIDES_BY_ID = parse(`
+  query GetRidesId($id: ID!) {
+    getRidesId(id: $id) {
       id
       driverName
       departureCity
@@ -54,23 +57,68 @@ const GET_RIDES_BY_ID = gql`
       pet
     }
   }
-`;
+`);
 
-const id = "GET_RIDES_BY_ID";
+const RideDetail = ({ rideId }: { rideId: string }) => {
+  const { loading, error, data } = useQuery(GET_RIDES_BY_ID, {
+    variables: { id: rideId },
+  });
 
-const query = Connection.query(
-  GET_RIDES_BY_ID,
-  { id },
-  (error: any, results: any) => {
-    if (error) {
-      console.error("Erreur lors de l'exécution de la requête :", error);
-    } else {
-      console.log("Résultats de la requête :", results);
-    }
+  if (loading) {
+    return <Loader />;
   }
-);
 
-export default query;
+  if (error) {
+    return <p>Erreur: {error.message}</p>;
+  }
+
+  const ride = data?.Ride;
+
+  if (!ride) {
+    return <p>Trajet non trouvée.</p>;
+  }
+
+  return <RideDetail rideId={rideId} />;
+};
+
+export default RideDetail;
+
+/*<Ride ride={rideId} />
+      {/* <Main>
+        <DetailSection>
+          <Start>
+            <StartTimeImg src={startingPoint} alt="starting position" />
+            <StartTime>08h00</StartTime>
+            <StartCity>{ride.departureCity}</StartCity>
+          </Start>
+          <DotContainer>
+            <Dot />
+            <Dot />
+            <Dot />
+          </DotContainer>
+          <End>
+            <EndTime>18h00</EndTime>
+            <EndingPointImg src={endingPoint} alt="ending position" />
+            <EndCity>{ride.arrivalCity}</EndCity>
+          </End>
+          <Price>
+            <PriceH1>prix</PriceH1>
+            <PriceValue>{ride.ridePrice}€</PriceValue>
+          </Price>
+          <Driver>
+            <DriverImg src={steeringWheel} alt="steering wheel" />
+            <DriverName>{ride.driverName}</DriverName>
+            <DriverPPImg src={driver} alt="driver pp img" />
+          </Driver>
+        </DetailSection>
+        <InfoSection>
+          <ChooseRideButton />
+          <MoreInfoTitle>informations supplémentaires</MoreInfoTitle>
+          <MoreInfoText>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+          </MoreInfoText>
+        </InfoSection>
+      </Main> */
 
 //           </Start>
 //           <DotContainer>

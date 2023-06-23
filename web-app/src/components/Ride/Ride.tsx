@@ -133,7 +133,7 @@ const Ride = ({
         </DriverPP>
       </RightSide>
 
-      <Link to={RIDE_DETAIL_PATH}>detail trajet</Link>
+      <Link to={`${RIDE_DETAIL_PATH}/${id}`}>Détail trajet</Link>
 
       <CloseButton onClick={onCloseButtonClick} />
       {showDeleteConfirmation && (

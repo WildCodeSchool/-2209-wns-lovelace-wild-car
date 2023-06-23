@@ -11,6 +11,13 @@ export default class RideResolver {
   rides(): Promise<Ride[]> {
     return RideRepository.getRides();
   }
+  
+  @Query(() => Ride)
+  getRidesId(@Arg("id") id: string) {
+    return RideRepository.getRidesId(id);
+  }
+
+
 
   @Mutation(() => Ride)
   createRide(

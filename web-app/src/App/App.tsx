@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { MyProfileQuery } from "../gql/graphql";
 
@@ -26,6 +26,10 @@ const MY_PROFILE = gql`
   }
 `;
 
+function DetailPage() {
+  let { rideId } = useParams();
+}
+
 function App() {
   return (
     <>
@@ -34,7 +38,10 @@ function App() {
         <Routes>
           <Route path={HOME_PATH} element={<Home />} />
 
-          <Route path={RIDE_DETAIL_PATH} element={<RideDetail />} />
+          <Route
+            path={RIDE_DETAIL_PATH}
+            element={<RideDetail rideId="$rideId" />}
+          />
           <Route path={TRAJECT_SUMMARY} element={<TrajectSummary />} />
         </Routes>
       </MainContainer>

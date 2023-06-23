@@ -15,11 +15,11 @@
    })
    driverName: string;
 
-   @Field()
+   @Field( {nullable : true})
   @MinLength(1, { message: "La ville de départ doit faire au moins un caractère de long." })
   departureCity: string;
 
-   @Field()
+   @Field( {nullable : true})
   @MinLength(1, { message: "L'adresse de départ doit faire au moins un caractère de long." })
   departureAdress: string;
 
