@@ -1,67 +1,69 @@
- import {   IsInt, IsUUID, MinLength, IsBoolean, IsDate, IsDateString } from "class-validator";
- import { ArgsType, Field, ID } from "type-graphql";
- 
- 
+import {
+  IsInt,
+  IsUUID,
+  MinLength,
+  IsBoolean,
+  IsDate,
+  IsDateString,
+} from 'class-validator';
+import { ArgsType, Field, ID } from 'type-graphql';
 
- 
+@ArgsType()
+class CreateRideArgs {
+  @Field()
+  @MinLength(1, {
+    message: 'Le prénom et nom doit faire au moins un caractère de long.',
+  })
+  driverName: string;
 
- @ArgsType()
- class CreateRideArgs {
-
-
-   @Field()
-   @MinLength(1, {
-     message: "Le prénom et nom doit faire au moins un caractère de long.",
-   })
-   driverName: string;
-
-   @Field()
-  @MinLength(1, { message: "La ville de départ doit faire au moins un caractère de long." })
+  @Field({ nullable: true })
+  @MinLength(1, {
+    message: 'La ville de départ doit faire au moins un caractère de long.',
+  })
   departureCity: string;
 
-   @Field()
-  @MinLength(1, { message: "L'adresse de départ doit faire au moins un caractère de long." })
+  @Field()
+  @MinLength(1, {
+    message: "L'adresse de départ doit faire au moins un caractère de long.",
+  })
   departureAdress: string;
 
-   @Field()
-   @IsDate()
+  @Field()
+  @IsDate()
   rideDate: Date;
 
-
-   @Field()
-  @MinLength(1, { message: "L'adresse d'arriver doit faire au moins un caractère de long." })
+  @Field({ nullable: true })
+  @MinLength(1, {
+    message: "L'adresse d'arriver doit faire au moins un caractère de long.",
+  })
   arrivalCity: string;
 
-   @Field()
-   @IsInt()
+  @Field()
+  @IsInt()
   maxPassagerNumber: number;
 
-   @Field()
-   @IsInt()
+  @Field()
+  @IsInt()
   maxPassagerLeft: number;
 
-   @Field()
-   @IsInt()
+  @Field()
+  @IsInt()
   ridePrice: number;
 
-   @Field()
-   @IsBoolean()
+  @Field()
+  @IsBoolean()
   smoker: boolean;
 
-   @Field()
-   @IsBoolean()
-   pet: boolean;
- }
+  @Field()
+  @IsBoolean()
+  pet: boolean;
+}
 
+@ArgsType()
+class UpdateRideArgs extends CreateRideArgs {
+  @Field(() => ID)
+  @IsUUID()
+  id: string;
+}
 
-
- @ArgsType()
- class UpdateRideArgs extends CreateRideArgs {
-   @Field(() => ID)
-   @IsUUID()
-   id: string;
- }
-
- export { CreateRideArgs, UpdateRideArgs };
-
- 
+export { CreateRideArgs, UpdateRideArgs };

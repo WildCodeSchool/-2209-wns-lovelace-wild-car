@@ -1,9 +1,8 @@
-import { Arg, Args, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Args, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 
-import Ride from "../../models/Ridedb/Ride.entity";
-import RideRepository from "../../models/Ridedb/Ride.repository";
-import { CreateRideArgs , UpdateRideArgs } from "./Ride.input";
-
+import Ride from '../../models/Ridedb/Ride.entity';
+import RideRepository from '../../models/Ridedb/Ride.repository';
+import { CreateRideArgs, UpdateRideArgs } from './Ride.input';
 
 @Resolver(Ride)
 export default class RideResolver {
@@ -12,36 +11,78 @@ export default class RideResolver {
     return RideRepository.getRides();
   }
 
-  @Mutation(() => Ride)
-  createRide(
-
-    @Args() { driverName, departureCity, departureAdress, rideDate,
-      arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
-      smoker, pet  }: CreateRideArgs
-  ): Promise<Ride> {
-    return RideRepository.createRide( driverName, departureCity,
-       departureAdress,  rideDate , arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
-      smoker, pet);
+  @Query(() => [Ride])
+  async getRidesByLocations(
+    @Arg('departureCity') departureCity: string
+  ): Promise<Ride[]> {
+    console.log(departureCity);
+    return RideRepository.getRidesByLocations(departureCity);
   }
 
   @Mutation(() => Ride)
-  deleteRide(@Arg("id") id: string): Promise<Ride> {
+  createRide(
+    @Args()
+    {
+      driverName,
+      departureCity,
+      departureAdress,
+      rideDate,
+      arrivalCity,
+      maxPassagerNumber,
+      maxPassagerLeft,
+      ridePrice,
+      smoker,
+      pet,
+    }: CreateRideArgs
+  ): Promise<Ride> {
+    return RideRepository.createRide(
+      driverName,
+      departureCity,
+      departureAdress,
+      rideDate,
+      arrivalCity,
+      maxPassagerNumber,
+      maxPassagerLeft,
+      ridePrice,
+      smoker,
+      pet
+    );
+  }
+
+  @Mutation(() => Ride)
+  deleteRide(@Arg('id') id: string): Promise<Ride> {
     return RideRepository.deleteRide(id);
   }
 
-
   @Mutation(() => Ride)
   updateRide(
-    @Args() { id, driverName, departureCity,
-      departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
-     smoker, pet }: UpdateRideArgs
+    @Args()
+    {
+      id,
+      driverName,
+      departureCity,
+      departureAdress,
+      rideDate,
+      arrivalCity,
+      maxPassagerNumber,
+      maxPassagerLeft,
+      ridePrice,
+      smoker,
+      pet,
+    }: UpdateRideArgs
   ): Promise<Ride> {
-    return RideRepository.updateRide(id, driverName, departureCity,
-      departureAdress, rideDate, arrivalCity, maxPassagerNumber, maxPassagerLeft, ridePrice,
-     smoker, pet);
+    return RideRepository.updateRide(
+      id,
+      driverName,
+      departureCity,
+      departureAdress,
+      rideDate,
+      arrivalCity,
+      maxPassagerNumber,
+      maxPassagerLeft,
+      ridePrice,
+      smoker,
+      pet
+    );
   }
 }
-  
-
-  
-

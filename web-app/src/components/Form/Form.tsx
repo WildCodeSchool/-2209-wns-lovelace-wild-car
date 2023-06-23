@@ -42,52 +42,52 @@ const Form = ({
   handleDateChange: (value: string) => void;
   handlePassengerChange: (value: number) => void;
 }) => {
-  const submit = () => {
-    console.log('submit');
-  };
+  // const submit = () => {
+  //   console.log('submit');
+  // };
   return (
     <>
       <FormBlock>
         <FormRide>
           <StartBlock>
-            <StartingPointImage src={startingPoint} alt='start position' />
+            <StartingPointImage src={startingPoint} alt="start position" />
           </StartBlock>
           <RideStart
-            type='text'
-            name='start'
-            placeholder='départ'
+            type="text"
+            name="start"
+            placeholder="départ"
             value={dataStart}
             onChange={(event) => handleStartChange(event.target.value)}
           />
           <EndBlock>
-            <StartingPointImage src={startingPoint} alt='start position' />
+            <StartingPointImage src={startingPoint} alt="start position" />
           </EndBlock>
           <RideEnd
-            type='text'
-            name='end'
-            placeholder='arrivée'
+            type="text"
+            name="end"
+            placeholder="arrivée"
             value={dataEnd}
             onChange={(event) => handleEndChange(event.target.value)}
           />
         </FormRide>
         <FormInfo>
           <DateBlock>
-            <DateImage src={calendarImage} alt='calendar icon' />
+            <DateImage src={calendarImage} alt="calendar icon" />
           </DateBlock>
           <RideDate
-            type='text'
-            name='end'
+            type="text"
+            name="end"
             placeholder="aujourd'hui"
             value={dataDate}
             onChange={(event) => handleDateChange(event.target.value)}
           />
           <PassengerBlock>
-            <PassengerImage src={passengerImage} alt='passenger icon' />
+            <PassengerImage src={passengerImage} alt="passenger icon" />
           </PassengerBlock>
           <RidePassenger
-            type='number'
-            name='end'
-            placeholder='1'
+            type="number"
+            name="end"
+            placeholder="1"
             value={dataPassenger}
             onChange={(event) =>
               handlePassengerChange(Number(event.target.value))
